@@ -7,6 +7,11 @@
 \usepackage{anyfontsize}
 \usepackage{minted}
 \usepackage{alltt}
+\usepackage{tabularray}
+
+%\usepackage{pgfpages}
+%\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
+%\pgfpagesuselayout{2 on 1}[letterpaper,border shrink=2mm]
 
 \usemintedstyle{tango}
 \newcommand{\ltprgsize}{\fontsize{5}{5}\selectfont}
@@ -1259,7 +1264,8 @@ Iterator<CCell> iterator1 = getTable().getCells();
 
 \begin{frame}
 \frametitle{Performance Evaluation}
-\small{The comparison of the running time by using TabbyXL with three different options for transforming 200 tables of Troy200 dataset \cite{Nagy2016}}
+\small{The comparison of the running time by using TabbyXL with three different options for transforming 200 tables of Troy200 dataset %\cite{Nagy2016}%
+}
 \begin{table}
 		\centering
 		    \bgroup
@@ -1294,8 +1300,8 @@ For testing, we used 3.2 GHz 4-core CPU
 \begin{block}{Role Analysis}
 \begin{itemize}
 \item \emph{Contest task}: The segmentation of a table into typical functional cell regions
-\item \emph{Testing dataset}: Troy200  \cite{Nagy2016}
-\item \emph{Contestant}: MIPS (TANGO) \cite{Embley2016}
+\item \emph{Testing dataset}: Troy200  % \cite{Nagy2016}
+\item \emph{Contestant}: MIPS (TANGO) % \cite{Embley2016}
 \item \emph{Accuracy}: MIPS (TANGO) --- \textbf{0.9899} vs. TabbyXL --- \textbf{0.9950}
 \end{itemize}
 \end{block}
@@ -1304,7 +1310,7 @@ For testing, we used 3.2 GHz 4-core CPU
 \begin{itemize}
 	\item \emph{Contest task}: The extraction of header hierarchies from tables
 	\item \emph{Testing dataset}: A random subset of SAUS\footnote{\url{http://dbgroup.eecs.umich.edu/project/sheets/datasets.html}}
-	\item \emph{Contestant}: Senbazuru \cite{Chen2014}
+	\item \emph{Contestant}: Senbazuru % \cite{Chen2014}
 	\item $F$\emph{-score}: Senbazuru --- \textbf{0.8860} vs. TabbyXL --- \textbf{0.8657}
 \end{itemize}
 \end{block}
@@ -1383,19 +1389,227 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Domain Knowledge Graphs Induction from Tables}
+  \textbf{Tables} are the most available sources of information. They \textbf{are} valuable data \textbf{sources} for \textbf{Knowledge Bases} (KB)
+  \begin{description}
+  \item[Knowledge Base Construction] Populating with document and structured table extracted data
+  \item[Knowledge Base Population] Populating with recognized new facts on entities from big text corpses
+  \item[Knowledge base Augmentation] Populating with relations with table data.
+  \end{description}
+
+{\footnotesize
+\begin{enumerate}
+\item (Ré, 2014) Ré C., et al. Feature engineering for knowledge base construction. IEEE Data Eng. Bull., 37, 26–40, (2014).
+\item    (Balog, 2018) Balog K. Populating knowledge bases. Entity-Oriented Search. INRE, 39, 189–222, (2018).
+\item    (Zhang \& Balog, 2020) Zhang S. \& Balog K. Web table extraction, retrieval, and augmentation: A survey. ACM Trans. Intell. Syst. Technol., 11, (2020).
+  \end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
+  There three main stages of Automatic table interpretation (Shigarov, 2017)
+  \frametitle{Automatic Table Interpretation}
+
+  \includegraphics[width=\linewidth]{table-descr-proc.jpg}
+
+{\footnotesize
+\begin{enumerate}
+\item (Shigarov, 2017) Shigarov A., Mikhailov A. Rule-based spreadsheet data transformation from arbitrary to relational tables. Information Systems, 71, 123-136 (2017).
+\end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semantic Table Interpretation}
+
+Semantic interpretation (Annotation) of tables (Semantic Table Interpretation, STI) is a recognition of mutual and external relations between elements of table content.  Externals relate to an enterprise KG and/or a global KG (e.g. DBPedia.org).
+
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+      \item Cell-Entity Annotation (CEN)
+      \item Column-Type Annotation (CTA)
+      \item Column Property Annotation (CPA)
+      \item Topic Annotation
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    \includegraphics[width=\linewidth]{table-sem-interp.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Cell-Entity Annotation}
+  CEA comprises tho sequential steps as follows:
+  \begin{enumerate}
+  \item Select a candidate entity set from DBPedia.org for each value of a cell via SPARQL endpoint and DBPedia lookup.
+  \item Disambiguation
+  \end{enumerate}
 
 
-
+A SPARQL-query matching words of a phrase.
+\begin{minted}{sparql}
+SELECT DISTINCT (str(?subject) as ?subject)
+WHERE {
+    ?subject a ?type .
+    ?subject rdfs:label ?label .
+    ?label <bif:contains> ".*%value1*." AND ".*%value2*." ... .
+    FILTER NOT EXISTS { ?subject dbo:wikiPageRedirects ?r2 } .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/resource/Category:")) .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/property/")) .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/ontology/")) .
+    FILTER (strstarts(str(?type), "http://dbpedia.org/ontology/")) .
+    FILTER (lang(?label) = "en")
+}
+ORDER BY ASC(strlen(?label))
+LIMIT 100
+\end{minted}
+\end{frame}
 
 % ----------------------------------------------------------------------------------
 
 \begin{frame}
-  \begin{center}
-  \Large Thanks for Your interest to our project!
-\end{center}
+  \frametitle{Evaluation on Test Table Sets}
+
+  A well-known precision measurement (\emph{accuracy}) is used for assessment
+  \[
+\text{Accuracy} = \frac{CC}{NC},
+\]
+
+\noindent where $CC$ is the \textbf{number} of the correctly related columns to a categorical entity, and $CN$ is the total \textbf{number} of columns.
+
+\noindent\begin{tblr}
+  {width=1\linewidth, colspec={|X[4]|X|X|X|}, column{1}={l}}
+  \hline
+Recognition stage & \textbf{T2Dv2} & Tough\_Tables & GitTables \\
+  \hline
+Stage 2, Atomic column classification & \textbf{0.994} & 0.956 & 0.938 \\
+  \hline
+Stage 3, Column entity identification & \textbf{0.924} & -- & -- \\
+  \hline
+\end{tblr}
+Comparison with analogs
+
+\noindent\begin{tblr}
+  {width=1\linewidth, colspec={|X[3]|X|X|X|X|}, column{1}={l}}
+  \hline
+ & TAIPAN & TableMiner+ & \textbf{T2Dv2} & MantisTable \\
+  \hline
+ Column entity identification & 0.540 & 0.871 & \textbf{0.924} & 0.979\\
+  \hline
+\end{tblr}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Knowledge Representation and Reasoning: the PCF-Calculus}
+  The main properties of the language of positively constructed formulas (PCF) and its calculi:
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+      \item PCFs have a large-block structure (tree-like) and consist of only positive quantifiers ∃ and ∀
+      \item the PCF-based calculus have a unique inference rule
+      \end{itemize}
+
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{pcf-block-struct.png}
+    \end{column}
+  \end{columns}
+\begin{itemize}
+\item the proof in the PCF-calculus is organized as a question-answering procedure
+\item PCF-calculus is both machine-oriented and human-oriented; it is \textbf{compatible with heuristics}
+\item the semantic of the PCF-calculus can be changed without modifying axioms and the inference rule
+\end{itemize}
 \end{frame}
 
 
+\begin{frame}[fragile]
+  \frametitle{PCF-Based Method for Problem Solving}
+   \begin{columns}
+     \begin{column}{0.6\textwidth}
+       \includegraphics[width=\linewidth]{pcf-robo-planning.pdf}
+     \end{column}
+     \begin{column}{0.3\textwidth}
+       \includegraphics[width=\linewidth]{pcf-room.png}
+     \end{column}
+   \end{columns}
+   \begin{itemize}
+   \item The goal of the team  of robot is to transport blocks to the target area
+   \item Each block can be dragged by two or more robots
+   \item The current state of the  World and the goal of the group are formalized in PCF
+   \item The PCF-based prover and a selection mechanism produce the optimal joint plan of actions for the team
+   \item The current plan can be easily modified whenever the state of the World is changed
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{A Master Degree Program. Semantic Technologies and Multiagent Systems}
+   It is a joint effort of Saint-Petersburg Electrotechnical University (LETI), Irkutsk State University, and ISDCT SB RAS.
+   Main subjects.
+
+   \begin{itemize}
+   \item Computation Geometry, Digital Signal Processing, Internet of Things,
+   \item Semantic web, Semantic web Information System Development,
+   \item AI Basics, Knowledge representation, Object-oriented Logic Programming,
+   \item Answer Set Programming (SAT), Natural Language Processing,
+   \item Machine Learning, Neural Networks, Deep Learning,
+   \item Multiagent Systems, Optimization with Multiagent Systems.
+   \end{itemize}
+
+   Started at 2022-09-01.
+
+   {\footnotesize \url{https://etu.ru/sveden/education/programs/semanticheskie-tehnologii-i-mnogoagentnye-sistemy-01.04.02.html}}
+ \end{frame}
+
+
+ \begin{frame}
+   \frametitle{Conclusion (the final one)}
+   \begin{itemize}
+   \item Classic knowledge-based systems are powerful AI tools for solving wide class of recognition problems and synthesis of various kind: source code, data objects, control
+   \item Contemporary means combine classic and new approaches
+   \item Less dependent on computational resources (as compared to machine learning)
+   \item Allow justification of the produced solutions
+   \item Cover a larger set of tasks
+   \item Natural for math science, and require higher level of AI education
+   \end{itemize}
+ \end{frame}
+
+ % \begin{frame}
+ %   \frametitle{Infrastructure for Scientific Research}
+ %   The infrastructure is focused on creating service compositions that integrate software designed by developers from different subject areas to solve complex problems.
+
+ %   \begin{columns}
+ %     \begin{column}{0.4\textwidth}
+ %       \includegraphics[width=\linewidth]{lego-pile.jpg}
+ %     \end{column}
+ %     \begin{column}{0.1\textwidth}
+ %       \includegraphics[width=\linewidth]{arrow-right-svgrepo-com.pdf}
+ %     \end{column}
+ %     \begin{column}{0.4\textwidth}
+ %       \includegraphics[width=\linewidth]{lego-mf.jpg}
+ %     \end{column}
+ %   \end{columns}
+ % \end{frame}
+
+ % \begin{frame}
+
+ % \end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}
+  \begin{center}
+  \Large Thank You!
+\end{center}
+\end{frame}
 
 \end{document}
 
