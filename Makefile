@@ -2,8 +2,7 @@
 
 LATEXMK=latexmk -lualatex -latexoption=-shell-escape
 
-# TARGET=talk-mda-lod-2019-12-zh-cn
-TARGET=talk-mda-lod-arch-2019-08-03
+TARGET=talk-la-in-soft-data-design-2023-12-18
 
 run: present
 
@@ -13,6 +12,6 @@ $(TARGET).pdf: $(TARGET).tex
 	$(LATEXMK) $<
 
 clean:
-	BIBINPUTS=$(BIBROOT) $(LATEXMK) -C
+	BIBINPUTS=$(BIBROOT) $(LATEXMK) -C $(TARGET)
 	rm -f *.{bbl,aux,ps,dvi,log,toc,out,vrb,snm,nav} *~ ~* *.bak *.synctex.* *.thm *-joined.pdf *.wbk *_latexmk *.fls
 	# cd pics && make clean
