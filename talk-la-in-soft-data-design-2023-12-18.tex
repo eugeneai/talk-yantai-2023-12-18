@@ -71,7 +71,8 @@
     \setmathfont{Latin Modern Math}
 %    \setsansfont{Linux Biolinum O}
     \setsansfont{Source Han Sans CN Medium}
-    \setmonofont{Fira Mono}[Scale=MatchLowercase]
+    \setmonofont{Source Han Sans CN Medium}
+    % \setmonofont{Fira Mono}[Scale=MatchLowercase]
     \usefonttheme{professionalfonts}
     % \setmathfont[
     %     Ligatures=TeX,
@@ -106,7 +107,9 @@
 \title{Logical Approach in Software and Data Design\\软件和数据设计中的逻辑方法}
 \author[E.~Cherkashin, et al.]{\bfseries%
   Evgeny Cherkashin}
-\institute{\normalsize Matrosov Institute for System Dynamics and Control Theory of Siberian Branch of Russian Academy of Sciences, Irkutsk, Russia\\%
+\institute{\normalsize Matrosov Institute for System Dynamics and Control Theory of Siberian Branch of Russian Academy of Sciences, Irkutsk, Russia\\
+  俄罗斯伊尔库茨克，俄罗斯科学院西伯利亚分院马特罗索夫系统动力学与控制理论研究所\\
+  %
   \email{\href{mailto:eugeneai@icc.ru}{eugeneai@icc.ru}}%
 }
 \date[2023]{2023, December,\\
@@ -123,6 +126,18 @@ Yantai, China
   \item transformation implementation with logical language Logtalk,
   \item usage of LOD sources in transformations for obtaining additional semantic data,
   \item generation of documents and user interfaces with LOD markup.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模型驱动架构： 研究目标}
+  \textbf{研究的主要目标是基于当今的系统建模可视化语言（SysML、UML、BPMN、CMMN）和现有的语义网词汇表和技术，构建一种 MDA 技术。以下技术和软件正在开发中}
+  \begin{enumerate}
+  \item 用 SysML、BPMN、CMMN 和源代码处理结果表示 CIM、
+  \item  用 UML、RDF 和现有词汇表表示 CIM、PIM 和 PSM、
+  \item 使用逻辑语言 Logtalk 实现转换、
+  \item  在转换中使用 LOD 源以获取额外的语义数据、
+  \item  使用 LOD 标记生成文档和用户界面。
   \end{enumerate}
 \end{frame}
 
@@ -143,6 +158,27 @@ Yantai, China
       \item[PSM] Platform--Specific Model;
       \item[CODE] Source code of software;
       \item[DATA] Initial database state.
+      \end{description}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模型驱动架构（Model--Driven Architecture）}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \includegraphics[width=1\linewidth]{mda-most-general.pdf}
+    \end{column}
+    \begin{column}{0.7\linewidth}
+      \begin{description}
+      \item[MDA] 模型驱动架构（Model--Driven Architecture）；
+      \item[CIM] Computationally Independent Model（独立计算模型）；
+      \item[CM] 计算模型；
+      \item[PIM] 平台独立模型；
+      \item[PM] 平台模型；
+      \item[PSM] 特定平台模型；
+      \item[CODE] 软件源代码；
+      \item[DATA] 初始数据库状态。
       \end{description}
     \end{column}
   \end{columns}
@@ -176,6 +212,23 @@ Yantai, China
   \end{itemize}
   The <<regular>> language allow us to use its libraries not directly related to MDA transformations.
 \end{frame}
+
+\begin{frame}
+  \frametitle{Logtalk 作为转换定义语言}
+  我们选择Logtalk是因为它
+  \begin{itemize}
+  \item 继承了广为人知的 Prolog 语言的语法和运行时；
+  \item 作为宏包实现，性能损失约为1.5%；
+  \item 具有灵活的语义：我们可以在相同的语法中定义转换和约束；
+  \item 实现了面向对象的知识（规则）结构化、封装和替换；
+  \item 实现转换的组合方式；
+  \item Logtalk是一个强大的引擎，可以对对象到对象的消息 \\
+    （事件）发布约束；
+  \item 为各种Prolog引擎提供实现。
+  \end{itemize}
+这种常规语言允许我们使用它与 MDA 转换没有直接关系的库。
+\end{frame}
+
 % \begin{frame}[fragile]
 %   \frametitle{Semantic Web technologies in representation of models
 %     during transformation}
@@ -204,57 +257,70 @@ Yantai, China
 \end{frame}
 
 \begin{frame}
+  \frametitle{Linked Open Data, 关联开放数据, LOD}
+  \begin{enumerate}
+  \item 信息在互联网上发布，采用开放式获取许可；
+  \item 它以机器可读的形式表示，例如 Excel 表格，而不是位图图片；
+  \item 使用的开放格式，如 CSV 而非 Excel；
+  \item 该格式基于 W3C 推荐的标准，允许引用 RDF 和 SPARQL；
+  \item 发布的数据指代对象，形成上下文。
+  \end{enumerate}
+  因此，应用程序以对象（实体）关系的形式发布数据。
+\end{frame}
+
+\begin{frame}
   \frametitle{Model Driven Architecture and Linked Open Data}
+  模型驱动架构和关联开放数据
   \begin{center}
     \includegraphics[width=0.9\linewidth]{mda-overview.pdf}
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{MDA infrastructure}
+  \frametitle{MDA infrastructure,  基础设施}
   \centering
   \includegraphics[width=1\linewidth]{architecture-mda-lod-ext.pdf}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Architecture of transformation modules}
+  \frametitle{Architecture of transformation modules, 转换模块的结构}
   \centering
 r  \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{PSM: Scenario of a Class synthesis}
+  \frametitle{PSM: Scenario of a Class synthesis, PSM: 课堂综合情景}
 
 %\begin{multicols}{2}
   \begin{columns}
     \begin{column}{0.6\textwidth}
 \begin{minted}[fontsize=\tiny]{logtalk}
-:- object(direct(_Package,_LocalProf,_CodeProf)).    % Transformation driver object
-:- public([tr/4,tr/3]).                              % Public interface of a class synthesis scenario
+:- object(direct(_Package,_LocalProf,_CodeProf)).    % 转换驱动程序对象
+:- public([tr/4,tr/3]).                              % 类综合方案的公共接口
 % . . . . . . . . . .
-tr(class, Class, ClassID):- ::package(Package),      % Synthesize a class
-    query(Package)::class(Name, ClassID),            % Query package structure in XMI
-    create_object(Class,      % . . . . .            % Create a <<Class>> object
-    create_object(Attributes, % . . . . .            % Create <<Attributes>> object
-    create_object(Methods,    % . . . . .            % ...<<Methods>>.
-    Class::name(Name),                               % Name the class.
+tr(class, Class, ClassID):- ::package(Package),      % 合成一个类
+    query(Package)::class(Name, ClassID),            % XMI 中的查询包结构
+    create_object(Class,      % . . . . .            % 创建类对象
+    create_object(Attributes, % . . . . .            % 创建属性对象
+    create_object(Methods,    % . . . . .            % ...方法
+    Class::name(Name),                               % 为班级命名。
     % Generate attributes of the class,
     % organizing them in a local database.
     % ...methods...
-    Class::attributes(Attributes),                   % Set the attributes for class.
-    Class::methods(Methods).                         % ...methods.
+    Class::attributes(Attributes),                   % 为类设置属性。
+    Class::methods(Methods).                         % ...方法。
 
-tr(attribute, Attribute, ClassID, AttributeID):-     % Attribute transformations
+tr(attribute, Attribute, ClassID, AttributeID):-     % 属性转换
     ::package(Package),
     query(Package)::attribute(Name,ClassID,AttrID),
     create_object(Attribute,  % . . . . .
-    Attribute::name(Name).                           % Name the attribute.
+    Attribute::name(Name).                           % 为属性命名。
 
-tr(method, Method, ClassID, MethodID):-              % Transformation of methods
+tr(method, Method, ClassID, MethodID):-              % 方法的转变
     ::package(Package),
     query(Package)::method(Name,ClassID,MethodID),
     create_object(Method,     % . . . . .
-    Method::name(Name).                              % Name of the method
+    Method::name(Name).                              % 方法名称
 :- end_object.
 \end{minted}
     \end{column}
@@ -266,21 +332,21 @@ tr(method, Method, ClassID, MethodID):-              % Transformation of methods
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Implementation of \texttt{Query} object}
+  \frametitle{Implementation of \texttt{Query} object, 实现查询对象}
 \begin{minted}[fontsize=\footnotesize{}]{logtalk}
 :- object(query(_XMI)).
 :- protected(xmi/1).
 :- public([class/2, attribute/3, method/3]).
 xmi(XMI) :- parameter(1, XMI).
-class(Name, ID):-                            % Recognition of Class in RDF
+class(Name, ID):-                            % 识别 RDF 中的类别
     ::xmi(XMI),
     XMI::rdf(ID,rdf:type,uml:'Class'),
     XMI::rdf(ID,rdfs:label, literal(Name)).
-attribute(Name, ClassID, ID):-               % ...attribute...
+attribute(Name, ClassID, ID):-               % ...属性...
     ::xmi(XMI),
     XMI::rdf(ClassID, xmi:ownedAttribute, ID),
     XMI::rdf(ID, rdfs:label, literal(Name)).
-method(Name, ClassID, ID):-                  % ...method...
+method(Name, ClassID, ID):-                  % ...方法...
     ::xmi(XMI),
     XMI::rdf(ClassID, xmi:ownedOperation, ID),
     XMI::rdf(ID, rdfs:label, literal(Name)).
@@ -290,7 +356,7 @@ method(Name, ClassID, ID):-                  % ...method...
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Code Block (idea is taken from \texttt{llvmlite}${}^*$)}
+  \frametitle{Code Block (idea is taken from \texttt{llvmlite}${}^*$, 代码块，创意来自 "llvmlite "图书馆)}
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \flushleft
@@ -328,7 +394,7 @@ renderitem(Item, String):-
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{PSM of a Python Class as a specialization of Code Block}
+  \frametitle{PSM of a Python Class as a specialization of Code Block, 作为代码块特化的 Python 类}
 %\begin{multicols}{2}
   \begin{columns}
     \begin{column}{0.6\textwidth}
