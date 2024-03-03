@@ -1272,6 +1272,27 @@ The actions serve to recover label-category pairs
 \end{frame}
 
 \begin{frame}
+\frametitle{CRL2J 翻译}
+\begin{columns}[t]
+\column{.55\textwidth}
+\small 生成电子表格数据转换程序 Maven 项目的工作流程
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{crl2j_wf_part1}
+\end{figure}
+
+\column{.05\textwidth}
+\\~\\
+
+\column{.4\textwidth}
+\small 将 CRL 规则集转换为 Java 源代码的工作流程
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{crl2j_wf_part2}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+
 \frametitle{CRL2J Translation}
 
 \begin{columns}
@@ -1284,6 +1305,28 @@ The actions serve to recover label-category pairs
 
 \column{.7\textwidth}
 \small{\centerline{Rule Object Model}}
+
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{rulemodel}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{CRL2J 翻译}
+
+\begin{columns}
+\column{.3\textwidth}
+\small{\centerline{在工作流程中}}
+
+\begin{figure}
+\includegraphics[width=0.65\linewidth]{rom_in_wf.eps}
+\end{figure}
+
+\column{.7\textwidth}
+\small{\centerline{规则对象模型}}
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{rulemodel}
@@ -1309,6 +1352,37 @@ The actions serve to recover label-category pairs
 }
 \footnotesize{
 \begin{example}[Fragment of the Generated Java Code]
+\begin{alltt}
+...
+Iterator<CCell> iterator1 = getTable().getCells();
+\textbf{while} (iterator1.hasNext()) \{
+  corner = iterator1.next();
+  \textbf{if} ((corner.getCl() == 1) && (corner.getRt() == 1) && ...
+    Iterator<CCell> iterator2 = getTable().getCells();
+    \textbf{while} (iterator2.hasNext()) \{
+...
+\end{alltt}
+\end{example}
+}
+\end{frame}
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{CRL2J 翻译}
+
+\footnotesize{
+\begin{example}[来源规则]
+\begin{alltt}
+\textbf{when}
+  \textbf{cell} corner: cl == 1, rt == 1, blank
+  \textbf{cell} c: cl > corner.cr, rt > corner.rb, ! marked
+\textbf{then}
+  \textbf{set mark} "@entry" \textbf{to} c
+  \textbf{new entry} c
+\end{alltt}
+\end{example}
+}
+\footnotesize{
+\begin{example}[生成的 Java 代码片段]
 \begin{alltt}
 ...
 Iterator<CCell> iterator1 = getTable().getCells();
@@ -1371,6 +1445,47 @@ Iterator<CCell> iterator1 = getTable().getCells();
 \end{frame}
 
 \begin{frame}
+\frametitle{绩效评估}
+\small{Troy200 数据集 200 个表格的转换结果}
+\footnotesize{
+\begin{table}
+		\centering
+		    \bgroup
+        \def\arraystretch{1.5}
+				\begin{tabular}{|l|c|c|c|c|}
+						\hline
+														& \multicolumn{2}{|c|}{角色分析} & \multicolumn{2}{|c|}{结构分析} \\
+														\cline{2-5}
+														& \multicolumn{4}{|c|}{实例类型} \\
+														\cline{2-5}
+			            衡量标准   & 参赛                      & 标签                     & 条目标签对            & 标签-标签对  \\
+			      \hline
+			            回顾    & 0.9813 $\frac{16602}{16918}$ & 0.9965 $\frac{4842}{4859}$ & 0.9773 $\frac{34270}{35066}$ & 0.9389 $\frac{1951}{2078}$ \\
+			            精确度 & 0.9996 $\frac{16602}{16609}$ & 0.9364 $\frac{4842}{5171}$ & 0.9965 $\frac{34270}{34389}$ & 0.9784 $\frac{1951}{1994}$ \\
+									$F$-总谱 & 0.9904                       & 0.9655                     & 0.9868                       & 0.9582                     \\
+			      \hline
+		    \end{tabular}
+				\egroup
+\end{table}
+}
+\begin{block}{\small Metrics}
+\footnotesize{
+\begin{equation*}
+\begin{aligned}[c]
+\text{回顾} = \frac{\left|R \cap S\right|}{\left|S\right|}
+\end{aligned}
+\quad
+\begin{aligned}[c]
+\text{精确度} = \frac{\left|R \cap S\right|}{\left|R\right|}
+\end{aligned}
+\end{equation*}
+}
+\scriptsize{\centerline{$S$ 是源表中的一组实例, $R$ 是一组典型形式的实例}}
+\end{block}
+\tiny 所有数据和重现结果的步骤可从以下网址获取 \url{http://dx.doi.org/10.17632/ydcr7mcrtp.5}
+\end{frame}
+
+\begin{frame}
 \frametitle{Performance Evaluation}
 \small{The comparison of the running time by using TabbyXL with three different options for transforming 200 tables of Troy200 dataset %\cite{Nagy2016}%
 }
@@ -1396,6 +1511,35 @@ $^\dagger$ $t_1$ --- a time of parsing the original ruleset and adding the resul
 $^\ddagger$ $t_2$ --- a time of asserting facts into the working memory and matching rules against the facts
 \\~\\
 For testing, we used 3.2 GHz 4-core CPU
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{绩效评估}
+\small{使用 TabbyXL 对 Troy200 数据集的 200 张表格进行转换时，三种不同选项的运行时间比较 %\cite{Nagy2016}%
+}
+\begin{table}
+		\centering
+		    \bgroup
+        \def\arraystretch{1.5}
+				\begin{tabular}{|l|c|c|c|}
+						\hline
+									运行时间             & CRL2J   & Drools  & Jess     \\
+						\hline
+									规则集准备 ($t_1$) & 2108* ms & $1711^\dagger$ ms & $432^\dagger$  ms \\
+                  规则集执行 ($t_2$)   & 367** ms & $1974^\ddagger$ ms & $4149^\ddagger$ ms \\
+			      \hline
+		    \end{tabular}
+				\egroup
+\end{table}
+\scriptsize{
+* $t_1$ --- 解析原始规则集并将其编译成 Java 程序的时间 \\
+** $t_2$ --- 执行生成的 Java 程序的时间
+\\~\\
+$^\dagger$ $t_1$ --- 解析原始规则集并将结果添加到规则引擎会话的时间 \\
+$^\ddagger$ $t_2$ --- 在工作记忆中断言事实并将规则与事实相匹配的时间
+\\~\\
+在测试中，我们使用了主频为 3.2 GHz 的 4 核 CPU
 }
 \end{frame}
 
@@ -1425,6 +1569,30 @@ For testing, we used 3.2 GHz 4-core CPU
 }
 \end{frame}
 
+\begin{frame}
+\frametitle{与他人比较}
+
+\small{
+\begin{block}{角色分析}
+\begin{itemize}
+\item \emph{竞赛任务}: 将表格划分为典型的功能单元区域
+\item \emph{测试数据集}: Troy200  % \cite{Nagy2016}
+\item \emph{参赛者}: MIPS (TANGO) % \cite{Embley2016}
+\item \emph{准确性}: MIPS (TANGO) --- \textbf{0.9899} vs. TabbyXL --- \textbf{0.9950}
+\end{itemize}
+\end{block}
+
+\begin{block}{Structural Analysis}
+\begin{itemize}
+	\item \emph{竞赛任务}: 从表格中提取表头层次结构
+	\item \emph{测试数据集}: 的一个随机子集 SAUS\footnote{\url{http://dbgroup.eecs.umich.edu/project/sheets/datasets.html}}
+	\item \emph{参赛者}: Senbazuru % \cite{Chen2014}
+	\item $F$\emph{-总谱}: Senbazuru --- \textbf{0.8860} vs. TabbyXL --- \textbf{0.8657}
+\end{itemize}
+\end{block}
+}
+\end{frame}
+
 % \section{Application Experience}
 
 \begin{frame}
@@ -1437,12 +1605,30 @@ Populating a web-based statistical atlas of the Irkutsk region --- (\textit{b}) 
 \end{frame}
 
 \begin{frame}
+\frametitle{应用体验}
+绘制伊尔库茨克州网络统计地图集 --- (\textit{b}) 通过从政府统计报告中提取数据 --- (\textit{a})
+\begin{figure}
+\includegraphics[width=1\linewidth]{application1}
+\end{figure}
+\tiny{更多详情请访问 \url{https://github.com/tabbydoc/tabbyxl/wiki/statistical-atlas}}
+\end{frame}
+
+\begin{frame}
 \frametitle{Application Experience}
 Generating conceptual models --- (\textit{b}) from arbitrary tables presented in industrial safety inspection reports --- (\textit{a})
 \begin{figure}
 \includegraphics[width=1\linewidth]{application2}
 \end{figure}
 \tiny{The more detail can be found at \url{https://github.com/tabbydoc/tabbyxl/wiki/industrial-safety-inspection}}
+\end{frame}
+
+\begin{frame}
+\frametitle{应用体验}
+生成概念模型 --- (\textit{b}) 来自工业安全检查报告中的任意表格 --- (\textit{a})
+\begin{figure}
+\includegraphics[width=1\linewidth]{application2}
+\end{figure}
+\tiny{更多详情请访问 \url{https://github.com/tabbydoc/tabbyxl/wiki/industrial-safety-inspection}}
 \end{frame}
 
 % \section{Conclusions \& Further Work}
@@ -1476,6 +1662,35 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
 
 \end{frame}
 
+\begin{frame}
+\frametitle{结论和下一步工作}
+
+\begin{itemize}
+\item 对电子表格数据管理软件开发的影响
+\begin{itemize}
+\item 将功能角色与数据项关联起来的表对象模型
+\item 根据用户定义的规则进行表格分析和解释
+\item 为恢复任意表的缺失语义而制定的行动
+\item 将规则转化为可执行的电子表格转换程序
+\end{itemize}
+\medskip
+\item 局限性
+\begin{itemize}
+\item 不准确的单元格结构妨碍了表格分析
+\item 非常有限的解释（没有外部词汇表）
+\end{itemize}
+\medskip
+\item 进一步的工作
+\begin{itemize}
+\item 利用可视（人类可读）细胞重新排列细胞结构
+\item 通过电子表格公式检测派生数据
+\item 通过命名实体识别丰富表格分析
+\item 将提取的数据项与 LOD 云连接起来
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
 % \section{References}
 
 % \begin{frame}[allowframebreaks]
@@ -1486,7 +1701,7 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
 % \end{frame}
 
 \begin{frame}
-\Huge{\centerline{Thanks}}
+\Huge{\centerline{Thanks!}}
 \bigskip
 \footnotesize{\centerline{Read more about the project at}}
 \scriptsize{\centerline{\url{http://td.icc.ru}}}
@@ -1494,6 +1709,25 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
 \bigskip
 \footnotesize{\centerline{The project source code is available at}}
 \scriptsize{\centerline{\url{https://github.com/tabbydoc/tabbyxl}}}
+\bigskip
+\begin{center}
+  \Large But it is not all $\ldots$
+\end{center}
+\end{frame}
+
+\begin{frame}
+\Huge{\centerline{谢谢!}}
+\bigskip
+\footnotesize{\centerline{有关该项目的更多信息，请访问}}
+\scriptsize{\centerline{\url{http://td.icc.ru}}}
+
+\bigskip
+\footnotesize{\centerline{项目源代码见}}
+\scriptsize{\centerline{\url{https://github.com/tabbydoc/tabbyxl}}}
+\bigskip
+\begin{center}
+  \Large 但这并不是全部 $\ldots$
+\end{center}
 \end{frame}
 
 
@@ -1506,6 +1740,24 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
   \item[Knowledge base Augmentation] Populating with relations with table data.
   \end{description}
 
+{\footnotesize
+\begin{enumerate}
+\item (Ré, 2014) Ré C., et al. Feature engineering for knowledge base construction. IEEE Data Eng. Bull., 37, 26–40, (2014).
+\item    (Balog, 2018) Balog K. Populating knowledge bases. Entity-Oriented Search. INRE, 39, 189–222, (2018).
+\item    (Zhang \& Balog, 2020) Zhang S. \& Balog K. Web table extraction, retrieval, and augmentation: A survey. ACM Trans. Intell. Syst. Technol., 11, (2020).
+  \end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{领域知识图谱 表格归纳法}
+  表格是最常用的信息来源。它们是知识库（KB）的重要数据源
+  \begin{description}
+  \item[知识库建设] 填充文件和结构化表格提取的数据
+  \item[知识库人口] 从大文本尸体中填充关于实体的公认新事实
+  \item[知识库扩充] 用表格数据填充关系
+  \end{description}
+\vspace{1em}
 {\footnotesize
 \begin{enumerate}
 \item (Ré, 2014) Ré C., et al. Feature engineering for knowledge base construction. IEEE Data Eng. Bull., 37, 26–40, (2014).
@@ -1529,6 +1781,19 @@ Generating conceptual models --- (\textit{b}) from arbitrary tables presented in
 \end{frame}
 
 \begin{frame}
+  \frametitle{自动释表}
+自动表格解释有三个主要阶段（Shigarov，2017）
+
+  \includegraphics[width=\linewidth]{table-descr-proc.jpg}
+
+{\footnotesize
+\begin{enumerate}
+\item (Shigarov, 2017) Shigarov A., Mikhailov A. Rule-based spreadsheet data transformation from arbitrary to relational tables. Information Systems, 71, 123-136 (2017).
+\end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
   \frametitle{Semantic Table Interpretation}
 
 Semantic interpretation (Annotation) of tables (Semantic Table Interpretation, STI) is a recognition of mutual and external relations between elements of table content.  Externals relate to an enterprise KG and/or a global KG (e.g. DBPedia.org).
@@ -1536,10 +1801,32 @@ Semantic interpretation (Annotation) of tables (Semantic Table Interpretation, S
   \begin{columns}
     \begin{column}{0.4\textwidth}
       \begin{itemize}
-      \item Cell-Entity Annotation (CEN)
+      \item Cell-Entity Annotation (CEA)
       \item Column-Type Annotation (CTA)
       \item Column Property Annotation (CPA)
       \item Topic Annotation
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    \includegraphics[width=\linewidth]{table-sem-interp.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semantic Table Interpretation}
+
+  表格的语义解释（注释）(Semantic Table Interpretation，STI)\\
+  是对表格内容元素之间相互关系和外部关系的一种确认。 外部关系涉及企业 KG\\
+  和/或全局 KG (例如 DBPedia.org)。
+
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+      \item 细胞实体注释（CEA）
+      \item 列式注释 (CTA)
+      \item 列属性注释 (CPA)
+      \item 主题注释
       \end{itemize}
     \end{column}
     \begin{column}{0.7\textwidth}
@@ -1576,6 +1863,33 @@ LIMIT 100
 \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{细胞实体注释}
+  CEA 包括以下三个连续步骤：
+  \begin{enumerate}
+  \item 通过 SPARQL 端点和 DBPedia 查找，为单元格的每个值从 DBPedia.org 中选择一个候选实体集。
+  \item 消歧义
+  \end{enumerate}
+
+匹配短语单词的 SPARQL 查询。
+\begin{minted}{sparql}
+SELECT DISTINCT (str(?subject) as ?subject)
+WHERE {
+    ?subject a ?type .
+    ?subject rdfs:label ?label .
+    ?label <bif:contains> ".*%value1*." AND ".*%value2*." ... .
+    FILTER NOT EXISTS { ?subject dbo:wikiPageRedirects ?r2 } .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/resource/Category:")) .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/property/")) .
+    FILTER (!strstarts(str(?subject), "http://dbpedia.org/ontology/")) .
+    FILTER (strstarts(str(?type), "http://dbpedia.org/ontology/")) .
+    FILTER (lang(?label) = "en")
+}
+ORDER BY ASC(strlen(?label))
+LIMIT 100
+\end{minted}
+\end{frame}
+
 % ----------------------------------------------------------------------------------
 
 \begin{frame}
@@ -1591,7 +1905,7 @@ LIMIT 100
 \noindent\begin{tblr}
   {width=1\linewidth, colspec={|X[4]|X|X|X|}, column{1}={l}}
   \hline
-Recognition stage & \textbf{T2Dv2} & Tough\_Tables & GitTables \\
+Recognition stage& \textbf{T2Dv2} & \vbox{Tough\_\\Tables} & \vbox{Git-\\Tables} \\
   \hline
 Stage 2, Atomic column classification & \textbf{0.994} & 0.956 & 0.938 \\
   \hline
@@ -1603,9 +1917,41 @@ Comparison with analogs
 \noindent\begin{tblr}
   {width=1\linewidth, colspec={|X[3]|X|X|X|X|}, column{1}={l}}
   \hline
- & TAIPAN & TableMiner+ & \textbf{T2Dv2} & MantisTable \\
+  & TAIPAN & \vbox{Table-\\Miner+} & \textbf{T2Dv2} & \vbox{Mantis-\\Table} \\
   \hline
  Column entity identification & 0.540 & 0.871 & \textbf{0.924} & 0.979\\
+  \hline
+\end{tblr}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evaluation on Test Table Sets}
+
+  采用众所周知的精确测量（\emph{精度}）进行评估
+  \[
+\text{准确性} = \frac{CC}{NC},
+\]
+
+\noindent 其中，$CC$ 是与分类实体正确相关的列数，$CN$ 是列的总数。
+
+\noindent\begin{tblr}
+  {width=1\linewidth, colspec={|X[4]|X|X|X|}, column{1}={l}}
+  \hline
+认可阶段 & \textbf{T2Dv2} & \vbox{Tough\_\\Tables} & \vbox{Git-\\Tables} \\
+  \hline
+第 2 阶段，原子柱分类 & \textbf{0.994} & 0.956 & 0.938 \\
+  \hline
+第 3 阶段，列实体识别 & \textbf{0.924} & -- & -- \\
+  \hline
+\end{tblr}
+与类似物的比较
+
+\noindent\begin{tblr}
+  {width=1\linewidth, colspec={|X[3]|X|X|X|X|}, column{1}={l}}
+  \hline
+ & TAIPAN & \vbox{Table-\\Miner+} & \textbf{T2Dv2} & \vbox{Mantis-\\Table} \\
+  \hline
+ 列实体标识 & 0.540 & 0.871 & \textbf{0.924} & 0.979\\
   \hline
 \end{tblr}
 \end{frame}
@@ -1632,6 +1978,26 @@ Comparison with analogs
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{知识表示与推理：PCF 微积分}
+  正构造公式（PCF）语言及其计算器的主要特性:
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+      \item  PCF 具有大块结构（树状)，\\ 仅由正量词∃ 和 ∀ 组成。
+      \item 基于 PCF 的微积分有一个唯一的推理规则
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{pcf-block-struct.png}
+    \end{column}
+  \end{columns}
+\begin{itemize}
+\item PCF 微积分中的证明是以问题解答过程的形式组织的
+\item PCF 微积分既面向机器，也面向人类；它与启发式方法兼容
+\item 可以在不修改公理和推理规则的情况下改变 PCF 微积分的语义
+\end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{PCF-Based Method for Problem Solving}
@@ -1649,6 +2015,26 @@ Comparison with analogs
    \item The current state of the  World and the goal of the group are formalized in PCF
    \item The PCF-based prover and a selection mechanism produce the optimal joint plan of actions for the team
    \item The current plan can be easily modified whenever the state of the World is changed
+   \end{itemize}
+ \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基于 PCF 的问题解决方法}
+  % PCF 即正构公式。
+   \begin{columns}
+     \begin{column}{0.6\textwidth}
+       \includegraphics[width=\linewidth]{pcf-robo-planning.pdf}
+     \end{column}
+     \begin{column}{0.3\textwidth}
+       \includegraphics[width=\linewidth]{pcf-room.png}
+     \end{column}
+   \end{columns}
+   \begin{itemize}
+   \item 机器人团队的目标是将积木运送到目标区域
+   \item 每个积木可由两个或多个机器人拖动
+   \item 世界的当前状态和小组的目标在 PCF 中形式化为
+   \item 基于 PCF 的求证器和选择机制为团队生成最优的联合行动计划
+   \item 只要 "世界 "的状态发生变化，就可以轻松修改当前计划
    \end{itemize}
  \end{frame}
 
@@ -1671,6 +2057,26 @@ Comparison with analogs
    {\footnotesize \url{https://etu.ru/sveden/education/programs/semanticheskie-tehnologii-i-mnogoagentnye-sistemy-01.04.02.html}}
  \end{frame}
 
+ \begin{frame}
+   \frametitle{A Master Degree Program.  语义技术与多代理系统}
+   该课程由圣彼得堡电工技术大学（LETI）、伊尔库茨克国立大学（Irkutsk State University）和俄罗斯科学院空间技术研究所（ISDCT SB RAS）联合开设。
+
+   主要课题。
+
+   \begin{itemize}
+   \item 计算几何、数字信号处理、物联网、
+   \item 语义网、语义网信息系统开发、
+   \item 人工智能基础、知识表示、面向对象逻辑编程、
+   \item 答案集编程 (SAT)、自然语言处理、
+   \item 机器学习、神经网络、深度学习、
+   \item 多代理系统，多代理系统优化。
+   \end{itemize}
+
+   始于 2022-09-01。
+
+   {\footnotesize \url{https://etu.ru/sveden/education/programs/semanticheskie-tehnologii-i-mnogoagentnye-sistemy-01.04.02.html}}
+ \end{frame}
+
 
  \begin{frame}
    \frametitle{Conclusion (the final one)}
@@ -1681,6 +2087,20 @@ Comparison with analogs
    \item Allow justification of the produced solutions
    \item Cover a larger set of tasks
    \item Natural for math science, and require higher level of AI education
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{结论（最后）}
+   \begin{itemize}
+   \item 经典的基于知识的系统是强大的人工智能工具，\\
+     可用于解决广泛的识别问题和各种综合问题：\\
+     源代码、数据对象、控制、数据处理、数据分析、数据挖掘。
+   \item 当代手段结合了经典方法和新方法
+   \item 较少依赖计算资源（与机器学习相比）
+   \item 允许对所产生的解决方案进行论证
+   \item 涵盖更多任务
+   \item 自然适用于数学科学，需要更高水平的人工智能教育
    \end{itemize}
  \end{frame}
 
@@ -1715,7 +2135,9 @@ Comparison with analogs
 
 \begin{frame}
   \begin{center}
-  \Large Thank You!
+    \Large Thank You!
+
+    \Large 谢谢大家!
 \end{center}
 \end{frame}
 
