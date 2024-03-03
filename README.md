@@ -1,4 +1,4 @@
-# Yantai University presentation of AI research at ISDCT SB RAS
+# Shandong, China presentation of AI research at ISDCT SB RAS
 
 To reconstruct the presentation TeXLive must be installed including LuaLaTeX.
 
