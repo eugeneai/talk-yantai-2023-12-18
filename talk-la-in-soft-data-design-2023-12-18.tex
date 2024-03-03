@@ -108,7 +108,8 @@
 \author[E.~Cherkashin, et al.]{\bfseries%
   Evgeny Cherkashin}
 \institute{\normalsize Matrosov Institute for System Dynamics and Control Theory of Siberian Branch of Russian Academy of Sciences, Irkutsk, Russia\\
-  俄罗斯伊尔库茨克，俄罗斯科学院西伯利亚分院马特罗索夫系统动力学与控制理论研究所\\
+俄罗斯伊尔库茨克，Matrosov 俄罗斯科学院西伯利亚分院系统动力学与控制理论研究所
+
   %
   \email{\href{mailto:eugeneai@icc.ru}{eugeneai@icc.ru}}%
 }
@@ -131,7 +132,7 @@ Yantai, China
 
 \begin{frame}
   \frametitle{模型驱动架构： 研究目标}
-  \textbf{研究的主要目标是基于当今的系统建模可视化语言（SysML、UML、BPMN、CMMN）和现有的语义网词汇表和技术，构建一种 MDA 技术。以下技术和软件正在开发中}
+  \textbf{研究的主要目标是基于当今的系统建模可视化语言\\（SysML、UML、BPMN、CMMN）和现有的语义网词汇表和技术\\ 构建一种 MDA 技术 以下技术和软件正在开发中}
   \begin{enumerate}
   \item 用 SysML、BPMN、CMMN 和源代码处理结果表示 CIM、
   \item  用 UML、RDF 和现有词汇表表示 CIM、PIM 和 PSM、
@@ -285,7 +286,7 @@ Yantai, China
 \begin{frame}
   \frametitle{Architecture of transformation modules, 转换模块的结构}
   \centering
-r  \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
+  \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -912,7 +913,21 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
 \end{frame}
 
 \begin{frame}
-  \frametitle{Conclusion}
+  \frametitle{使用的本体}
+  \begin{itemize}
+  \item Friend-of-a-friend (\textbf{foaf}): 代理人信息：个人、法人实体、计划代理人
+  \item Provenance (\textbf{prov}): 文件之间的引用
+  \item Dublin Core (\textbf{dc}): 编辑的注释标记
+  \item DBPedia resource (\textbf{dbr}): 即时对象和类的引用
+  \item Schema.org (\textbf{schema}): Google、Yandex、Yahoo 等搜索对象、结构元素
+  \item The Bibliographic Ontology (\textbf{bibo}): 文献参考标注
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Conclusion}
 A tools (components) for digital archive implementation, which allows
 to device information systems and document processing services
 with the following features:
@@ -922,17 +937,42 @@ with the following features:
 \item combine existing LOD data and its content in new documents dynamically with browser based context inference machine;
 \item use server-site inference machine (Prolog) to process RDF data upon
   request from browser's part of the system;
-  % \item organizes a platform for document semantic markup,
+ % \item organizes a platform for document semantic markup,
 \item convert created RDFa marked up HTML5 documents into Excel and Word formats.
+ \end{itemize}
+
+   \textbf{Applications}
+   \begin{itemize}
+ \item Document authoring automation;
+ \item Context-depended editing;
+   % \item Export into office formats;
+ \item Self-organizing global document flows;
+ \item Documents as data sources for information systems.
+
+   \end{itemize}
+ \end{frame}
+
+\begin{frame}
+  \frametitle{结论}
+实施数字档案的工具（组件），可以
+设备信息系统和文件处理服务
+具有以下功能:
+\begin{itemize}
+\item 加载 LOD 标注文件、提取、存储在图表中并为 RDF 数据编制索引
+\item 以三元组或全文搜索查询结果的形式检索 RDF 数据
+\item 利用基于浏览器的上下文推理机，将现有 LOD 数据及其内容动态结合到新文件中
+\item 使用服务器端推理机（Prolog）处理 RDF 数据。处理 RDF 数据
+  % \item organizes a platform for document semantic markup,
+\item 将创建的 RDFa 标记 HTML5 文档转换为 Excel 和 Word 格式。
 \end{itemize}
 
   \textbf{Applications}
   \begin{itemize}
-  \item Document authoring automation;
-  \item Context-depended editing;
+  \item 文件编写自动化
+  \item 根据上下文进行编辑
   % \item Export into office formats;
-  \item Self-organizing global document flows;
-  \item Documents as data sources for information systems.
+  \item 自组织全球文件流
+  \item 文件作为信息系统的数据源
   \end{itemize}
 
 \end{frame}
@@ -962,8 +1002,9 @@ with the following features:
   \vfill
   \begin{center}
     {\bfseries Software Platform for Rule-Based Spreadsheet Data Extraction and Transformation}\\
+    {\bfseries 基于规则的电子表格数据提取和转换软件平台}\\
     \medskip
-     Alexey Shigarov, Vasiliy Khristyuk, et al\\
+     Alexey Shigarov, Vasiliy Khristyuk, \emph{et al.}\\
     \medskip
     \texttt{shigarov@icc.ru} % Your email address
   \end{center}
@@ -992,14 +1033,47 @@ with the following features:
 \end{frame}
 
 \begin{frame}
+\frametitle{动机}
+\begin{itemize}
+\item 关于任意电子表格表格
+\begin{itemize}
+	\item 为科学和商业应用提供大量宝贵数据
+	\item 丰富多样的布局、风格和内容功能
+	\item 以人为本（结构不正确，内容杂乱无章）
+	\item 没有明确的语义供计算机解释
+\end{itemize}
+\bigskip
+\item 挑战
+\begin{itemize}
+	\item 如何从工作表中提取表格
+	\item 如何识别和纠正细胞结构异常
+	\item 如何恢复自动解释所需的语义
+	\item 如何使用外部词汇表将提取的数据概念化
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Background}
 \emph{Table understanding} includes the following tasks
 \bigskip
 \begin{enumerate}
-	\item \textbf{Extraction} --- detecting a table and recognizing the physical structure of its cells
-	\item \textbf{Role analysis} --- extracting functional data items from cell content
-	\item \textbf{Structural analysis} --- recovering internal relationships between extracted functional data items
-	\item \textbf{Interpretation} --- linking extracted functional data items with external vocabularies (general-purpose or domain-specific ontologies)
+	\item \textbf{Extraction}, detecting a table and recognizing the physical structure of its cells
+	\item \textbf{Role analysis}, extracting functional data items from cell content
+	\item \textbf{Structural analysis}, recovering internal relationships between extracted functional data items
+	\item \textbf{Interpretation}, linking extracted functional data items with external vocabularies (general-purpose or domain-specific ontologies)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{背景介绍}
+\emph{表格理解} 包括以下任务
+\bigskip
+\begin{enumerate}
+	\item \textbf{提取}: 检测表格并识别其单元格的物理结构
+	\item \textbf{角色分析}:  从单元格内容中提取功能数据项
+	\item \textbf{结构分析}: 恢复提取的功能数据项之间的内部关系
+	\item \textbf{口译}: 将提取的功能数据项与外部词汇表\\（通用或特定领域本体）连接起来
 \end{enumerate}
 \end{frame}
 
@@ -1066,6 +1140,28 @@ with the following features:
 \end{columns}
 \end{frame}
 
+\begin{frame}
+\frametitle{捐款}
+\small TabbyXL 是一个软件平台，旨在开发和执行基于规则的程序，\\
+用于电子表格数据提取和从任意表（a）到关系表（b）的转换。
+\vspace{1em}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.4\textwidth} % Left column and width
+\begin{block}{\small Novelty}
+\begin{itemize}
+\item \small 为数据项而非单元格分配\\角色的表格对象模型
+\item \small CRL，特定领域语言，\\ 用于表达用户定义的\\表格分析和解释规则
+\item \small CRL 到 Java 翻译器，用于合成电子\\
+  表格数据转换的\\可执行程序
+\end{itemize}
+\end{block}
+\column{.6\textwidth} % Right column and width
+%\begin{figure}
+\includegraphics[width=0.85\linewidth]{intro}
+%\end{figure}
+\end{columns}
+\end{frame}
+
 % \section{Approach}
 
 %\subsection{User-Defined Rules}
@@ -1111,6 +1207,31 @@ with the following features:
 \end{columns}
 \end{frame}
 
+\begin{frame}
+\frametitle{表格对象模型}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.4\textwidth} % Left column and width
+\begin{block}{\small 物理层}
+\small 以布局、样式和内容为特征的\\单元格
+\end{block}
+\begin{block}{\small 逻辑层}
+\small 功能数据项及其关系:
+\begin{itemize}
+	\item \small 条目（数值）
+	\item \small 标签（键）
+	\item \small 类别（概念）
+	\item \small 条目标签对
+	\item \small 标签-标签对
+	\item \small 标签-类别对
+\end{itemize}
+\end{block}
+\column{.6\textwidth} % Right column and width
+%\begin{figure}
+\includegraphics[width=0.85\linewidth]{tom}
+%\end{figure}
+\end{columns}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{CRL Grammar}
@@ -1142,6 +1263,29 @@ The actions correct an inaccurate layout and content of a hand-coded table
 }
 \end{frame}
 
+% \subsection{Cell Cleansing}
+\begin{frame}[fragile]
+\frametitle{细胞清洁}
+这些操作可纠正手工编码表格中不准确的布局和内容
+\begin{itemize}
+	\item \alert{<merge>} 当相邻两个单元格共享一个边界时，将其合并
+	\item \alert{<split>} 将跨 $n$ 格（行列交叉点）的合并单元格划分为 $n$ 单元格
+	\item \alert{<set text>} 修改单元格的文本内容
+	\item \alert{<set indent>} 修改单元格的文本缩进
+\end{itemize}
+\footnotesize{
+\begin{example}
+\begin{alltt}
+\textbf{when}
+  \textbf{cell} corner: cl == 1, rt == 1, blank
+  \textbf{cell} c: cl > corner.cr, rt > corner.rb
+\textbf{then}
+  \textbf{split} c
+\end{alltt}
+\end{example}
+}
+\end{frame}
+
 % \subsection{Role Analysis}
 
 \begin{frame}[fragile]
@@ -1150,6 +1294,26 @@ The actions recover entries and labels as functional data items presented in a t
 \begin{itemize}
 	\item \alert{<set mark>} annotates a cell with a user-defined tag that can be used in subsequent table analysis
 	\item \alert{<new entry>} (\alert{<new label>}) creates an entry (label) from a cell content with the use of an optional string processing
+\end{itemize}
+\footnotesize{
+\begin{example}
+\begin{alltt}
+\textbf{when}
+  \textbf{cell} corner: cl == 1, rt == 1, blank
+  \textbf{cell} c: cl > corner.cr, rt > corner.rb
+\textbf{then}
+  \textbf{new entry} c
+\end{alltt}
+\end{example}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{角色分析}
+操作恢复作为功能数据项的条目和标签，以表格形式呈现
+\begin{itemize}
+	\item \alert{<set mark>} 为单元格标注用户定义的标签，该标签可用于后续表格分析
+	\item \alert{<new entry>} (\alert{<new label>}) 使用可选的字符串处理，从单元格内容创建条目（标签）。
 \end{itemize}
 \footnotesize{
 \begin{example}
@@ -1188,6 +1352,27 @@ The actions recover pairs of two kinds: entry-label and label-label
 }
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{结构分析}
+恢复的操作对有两种：条目-标签和标签-标签
+\begin{itemize}
+	\item \alert{<add label>} 将条目与标签关联
+	\item \alert{<set parent>} 将两个标签绑定为父标签和子标签
+\end{itemize}
+\footnotesize{
+\begin{example}
+\begin{alltt}
+\textbf{when}
+  \textbf{cell} c1: cl == 1
+  \textbf{cell} c2: cl == 1, rt > c1.rt, indent == c1.indent + 2
+  \textbf{no cells}: cl == 1, rt > $c1.rt, rt < $c2.rt, indent == $c1.indent
+\textbf{then}
+  \textbf{set parent} c1.label \textbf{to} c2.label
+\end{alltt}
+\end{example}
+}
+\end{frame}
+
 
 % \subsection{Interpretation}
 
@@ -1210,19 +1395,52 @@ The actions serve to recover label-category pairs
 \end{example}
 }
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{口译}
+这些操作有助于恢复标签-类别对
+\begin{itemize}
+	\item \alert{<set category>} 将标签与类别关联
+	\item \alert{<group>} 将两个标签贴在一个可视为未定义类别的组上
+\end{itemize}
+\footnotesize{
+\begin{example}
+\begin{alltt}
+\textbf{when}
+  \textbf{label} l1: cell.mark == "stub"
+  \textbf{label} l2: cell.mark == "stub", cell.rt == l1.cell.rt
+\textbf{then}
+  \textbf{group} l1 \textbf{with} l2
+\end{alltt}
+\end{example}
+}
+\end{frame}
 % \subsection{Illustrative Example}
 
 \begin{frame}
 \frametitle{Illustrative Example}
-\scriptsize{The transformation of arbitrary tables with the same layout features (\textit{a} and \textit{c}) to their canonicalized versions (\textit{b} and \textit{d})}
-%\begin{figure}
+\scriptsize{The transformation of arbitrary tables with the same layout features (\textit{a} and \textit{c}) to their canonical versions (\textit{b} and \textit{d})}
+\begin{figure}
 \includegraphics[width=0.7\linewidth]{illustrative_example}
-%\end{figure}
+\end{figure}
 \scriptsize{The ruleset for the cell cleansing (\textit{a}), role analysis (\textit{b}, \textit{c}), structural analysis (\textit{d}, \textit{e}), and interpretation (\textit{f}, \textit{g})}
-%\begin{figure}
+\begin{figure}
 \includegraphics[width=0.75\linewidth]{illustrative_example_rules}
-%\end{figure}
-\tiny{This example is reproducible at \url{https://codeocean.com/capsule/5326436}}
+\end{figure}
+\scriptsize{This example is reproducible at \url{https://codeocean.com/capsule/5326436}}
+\end{frame}
+
+\begin{frame}
+\frametitle{示例}
+\scriptsize{将具有相同布局特征的任意表格（(a) 和 (c)）转换为其规范版本（(b) 和 (d)}
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{illustrative_example}
+\end{figure}
+\scriptsize{细胞清洗的规则集 (\textit{a}), 角色分析 (\textit{b}, \textit{c}), 结构分析 (\textit{d}, \textit{e}), 和解释 (\textit{f}, \textit{g})}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{illustrative_example_rules}
+\end{figure}
+\scriptsize{该示例可在以下网址复制 \url{https://codeocean.com/capsule/5326436}}
 \end{frame}
 
 % \section{Software Platform}
@@ -1243,6 +1461,24 @@ The actions serve to recover label-category pairs
 \column{.4\textwidth}
 \begin{block}{\small CRL2J option}
 \small Translating a ruleset expressed in CRL to an executable Java program
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{建筑学}
+%\begin{figure}
+\includegraphics[width=1.0\linewidth]{architecture}
+%\end{figure}
+\hspace*{\fill} \textbf{提供两种选择} \hspace*{\fill}
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{\small 规则引擎选项}
+\small 使用与 JSR-94 兼容的规则引擎（如 Drools、Jess）以适当格式执行规则集
+\end{block}
+\column{.4\textwidth}
+\begin{block}{\small CRL2J 选择权}
+\small 将 CRL 表达的规则集转换为可执行 Java 程序
 \end{block}
 \end{columns}
 \end{frame}
