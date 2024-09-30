@@ -460,7 +460,7 @@ render(Result):-         % Source generator
 
 
 \begin{frame}
-  \frametitle{Applications: Dataflow representation of NGS analysis of amplicons, 应用： 扩增子 NGS 分析的数据流表示法}
+  \frametitle{Applications: Dataflow representation of NGS analysis of amplicons}
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \begin{raggedright}
@@ -469,15 +469,18 @@ render(Result):-         % Source generator
     \end{column}
     \begin{column}{0.4\textwidth}\footnotesize
       \begin{tabular}{ll}
-        Term 术语 & Description 说明 \\
+        Term & Description \\
         \hline
-        NGS & 新一代测序 \\
-        Amplicon & 复制多次的 DNA \\ & 或 RNA 部分 \\
-        Mothur & 用于 NGS \\ & 研究的软件工具集 \\
-        Rapidminer & 视觉分析工具 \\
+        NGS & New Generation\\ & Sequencing\\
+        Amplicon & A DNA or RNA part \\
+                 & copied many times \\
+        Mothur & A software toolset for\\ & NGS research \\
+        Rapidminer & A visual tool for \\
+             & data mining modeling\\
+             &  and execution
       \end{tabular}
       ${}$\\[1em]
-      Green blocks are Mothur modules. Others are Rapidminer modules.\\ 绿色块为 Mothur 模块。其他为 Rapidminer 模块。
+      Green blocks are Mothur modules. Others are Rapidminer modules.
     \end{column}
   \end{columns}
 \end{frame}
@@ -503,9 +506,9 @@ render(Result):-         % Source generator
 % \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Rapidminer module synthesis, 模块合成}
+  \frametitle{Rapidminer module}
 \begin{minted}[fontsize=\tiny]{cpp}
-vector<string> AlignCommand::setParameters(){ // 模块源的一部分
+vector<string> AlignCommand::setParameters(){ // PART OF MODULE SOURCE
 try {
   CommandParameter ptemplate("reference", "InputTypes", "", "", "none", "none", "none","",false,true,true); parameters.push_back(ptemplate);
   CommandParameter pcandidate("fasta", "InputTypes", "", "", "none", "none", "none","fasta-alignreport-accnos",false,true,true); parameters.push_back(pcandidate);
@@ -515,7 +518,7 @@ try {
 // . . . . . . .
 \end{minted}
 \begin{minted}[fontsize=\tiny]{java}
-package com.rapidminer.ngs.operator; // 生成的 Java 模块
+package com.rapidminer.ngs.operator; // GENERATED JAVA MODULE
 // imports
 
 class MothurChimeraCcodeOperator extends MothurGeneratedOperator {
@@ -550,7 +553,7 @@ class MothurChimeraCcodeOperator extends MothurGeneratedOperator {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{RDF (TTL) representation and ad its query object, RDF 表示法并添加其查询对象}
+  \frametitle{RDF (TTL) representation and ad its query object}
 \begin{multicols}{2}
 \begin{minted}[fontsize=\tiny]{turtle}
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -594,7 +597,7 @@ mothur:align-check-name-parameter a ngsp:Parameter ;
 :- object(queryparam(_RDF,_Parameter),
           extends(ngsquerybase)).
 
-:- public(type/1).  % 立面对象
+:- public(type/1).
 type(Type) :-
     ::attr(type, Type).
 :- public(name/1).
@@ -650,22 +653,6 @@ attr(Name, Value):-
 \end{frame}
 
 \begin{frame}
-  \frametitle{Discussion, 讨论}
-  有趣的正面印象:
-  \begin{itemize}
-  \item Logtalk 和 RDF 是灵活、足够通用和方便的 MDA 实现基础架构；
-  \item 最好的实现手段是对规则进行Prolog谓词封装和Logtalk对象封装；
-  \item 并非所有的Logtalk属性都得到了研究：在消息监视器的基础上，\\ 可能会开发出更复杂的编程技术。
-  \end{itemize}
-  技术问题使得这种方法有些困难：
-  \begin{itemize}
-  \item 非常简单的任务就需要花费太多精力，比如文本处理：\\将标识符转换成 CamelCase；
-  \item 为了找到一个领域的词汇而上网太花时间了，\\但这比开发更有成效；
-  \item Prolog在MDA中并不流行，Logtalk也不是。
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
   \frametitle{Document authoring and storage}
   In most cases documents are created as a result of
   \begin{itemize}
@@ -686,41 +673,13 @@ attr(Name, Value):-
 \end{frame}
 
 \begin{frame}
-  \frametitle{Document authoring and storage, 文件编写和存储}
-  在大多数情况下，创建文档的结果是
-  \begin{itemize}
-  \item
-文本处理人员的创造性活动（创作）；
-  \item
-    打印数字副本或数据库中的数据记录；
-  \item
-        对数据库记录进行汇总操作（报告）。
-  \end{itemize}
-然后 以实体纸张和/或数字文档（PDF、DOCX、HTML）的形式存储。
-
-  自2000年以来，语义网（Semantic Web）和关联开放数据（Linked Open Data，LOD）得到了发展，从而可以
-  \begin{itemize}
-  \item
-    在已发布的文档中以结构化方式存储数据；
-  \item
- 计算处理存储的数据；
-  \item
-        在全球范围内整合数据结构和数据对象。
-  \end{itemize}
-
-  The aim of this research is to develop technologies, software and services allowing construction of digital archives supporting document data inclusion and inference from existing documents.
-  这项研究的目的是开发技术、软件和服务，以便构建数字档案，
-  支持文件数据的包含和现有文件的推理。
-\end{frame}
-
-\begin{frame}
-  \frametitle{Structure of a document, 文件结构}
+  \frametitle{Structure of a document}
   \centering
   \includegraphics[width=1\linewidth]{document-structural-view.pdf}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Open Annotation ontology (oa), 开放注释本体论}
+  \frametitle{Open Annotaiton (oa)}
 \begin{adjustwidth}{-3em}{-3em}
   \centering
   \includegraphics[width=1\linewidth]{Open-Annotation_CB_Bookmarking_and_Semantically_Tagging_A_webpage_spec20130128.png}
@@ -729,7 +688,7 @@ attr(Name, Value):-
 \end{frame}
 
 \begin{frame}[fragile,fragile]
-  \frametitle{Representation, 代表性}
+  \frametitle{Representation}
   % \begin{block}{}
   %   \textbf{Целью} исследования является создание методики разработки процедур трансформации (PD\footnote{Platform [description] model.}) в виде ОО-модулей.
   % \end{block}
@@ -785,7 +744,7 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
 \end{frame}
 
 \begin{frame}
-  \frametitle{Architecture, 建筑学}
+  \frametitle{Architecture}
   \begin{adjustwidth}{-2.5em}{-2.5em}
     \begin{center}
       \includegraphics[width=0.5\linewidth]{architecture-mda-lod-ext-tot.pdf}
@@ -801,7 +760,7 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
 \end{frame}
 
 \begin{frame}
-  \frametitle{Generated list of title page preambles, 生成扉页序言列表}
+  \frametitle{Generated list of title page preambles}
     \begin{adjustwidth}{-2.5em}{-2.5em}
     \begin{center}
       \includegraphics[width=0.7\linewidth]{template-title-pages.jpg}
@@ -810,7 +769,7 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
 \end{frame}
 
 \begin{frame}
-  \frametitle{Generated part of a course description, 生成课程说明的一部分}
+  \frametitle{Generated part of a study program}
    \begin{adjustwidth}{-2.5em}{-2.5em}
     \begin{center}
       \includegraphics[width=0.7\linewidth]{template-courses.jpg}
@@ -818,7 +777,7 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
   \end{adjustwidth}
 \end{frame}
 \begin{frame}
-  \frametitle{Imported time distribution for lecture, seminars, \ldots{}, 导入讲座和研讨会的时间分配、 }
+  \frametitle{Imported time distribution for lecture, seminary, \ldots}
    \begin{adjustwidth}{-2.5em}{-2.5em}
     \begin{center}
       \includegraphics[width=0.9\linewidth]{work-program-volume.jpg}
@@ -827,7 +786,7 @@ typeof="schema:CreativeWork sioc:Post prov:Entity">
 \end{frame}
 
 \begin{frame}
-  \frametitle{Complete document, 完整文件}
+  \frametitle{Complete document}
   \begin{adjustwidth}{-2.5em}{-2.5em}
     \begin{center}
       \begin{columns}
