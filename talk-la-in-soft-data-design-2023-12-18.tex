@@ -208,7 +208,7 @@
   \end{enumerate}
   Экспериментальный инструментарий
   \begin{itemize}
-  \item Предобученная НС (Segment Anything, 2024).
+  \item Предобученная НС изображений (Segment Anything, 2024).
   \item Хранение данных в распределенных графах знаний. Linked Open Data (LOD), SPARQL.
   \item Язык логического ООП (ЛООП) Logtalk - макропакет над разными реализациями ISO-Prolog.
     \item Методики применения ЛООП при проектировании моделей распознавания и трансформации.
@@ -217,42 +217,56 @@
 
 \begin{frame}
   \frametitle{Logtalk -- средство манипуляции знаниями}
-
+ % \frametitle{Logtalk as transformation definition language}
+  Выбран, т.к. имеет следующие свойства.
+  \begin{itemize}
+  \item наследует широко известный синтаксис и среду исполнения Prolog;
+  \item реализован как макропакет, потери производительности составляют около 1.5-10\%;
+  \item имеет гибкую семантику: преобразования и ограничения определяются в рамках одного и того же синтаксиса;
+  \item реализует объектно-ориентированное структурирование знаний (правил), инкапсуляцию и замену;
+  \item из преобразований можно строить композиции;
+  \item механизм включения ограничений перехватом сообщений объекта к объекту (событий);
+  \item есть варианты для различных реализаций ISO Prolog.
+  \end{itemize}
 \end{frame}
+
 
 \begin{frame}
-  \frametitle{Model--Driven Architecture: Research objectives}
-  \textbf{Main objective} of the research is to construct a MDA technology based on nowadays system modeling visual languages (SysML, UML, BPMN, CMMN) and existing Semantic Web \textbf{vocabularies} and \textbf{technologies}. The following techniques and software are under development:
-  \begin{enumerate}
-  \item CIM representation with SysML, BPMN, CMMN, and results of source code processing,
-  \item CIM, PIM, PSM representation in UML, RDF with existing vocabularies,
-  \item transformation implementation with logical language Logtalk,
-  \item usage of LOD sources in transformations for obtaining additional semantic data,
-  \item generation of documents and user interfaces with LOD markup.
-  \end{enumerate}
+  \frametitle{HZ What}
 \end{frame}
 
-  \textbf{研究的主要目标是基于当今的系统建模可视化语言（SysML、UML、BPMN、CMMN）和现有的语义网词汇表和技术，构建一种 MDA 技术。以下技术和软件正在开发中}
-\begin{frame}[fragile]
-  \frametitle{Model--Driven Architecture}
 
+\begin{frame}[fragile]
+  \frametitle{Интерпретация как трансформация. Model--Driven Architecture}
   \begin{columns}
     \begin{column}{0.4\textwidth}
       \includegraphics[width=1\linewidth]{mda-most-general.pdf}
     \end{column}
     \begin{column}{0.7\linewidth}
       \begin{description}
-      \item[MDA] Model--Driven Architecture;
-      \item[CIM] Computationally Independent Model;
-      \item[CM] Model of Computations;
-      \item[PIM] Platform Independent Model;
-      \item[PM] Platform Model;
-      \item[PSM] Platform--Specific Model;
-      \item[CODE] Source code of software;
-      \item[DATA] Initial database state.
+      \item[MDA] Model--Driven Architecture
+      \item[CIM] Computationally Independent Model
+      \item[CM] Model of Computations
+      \item[PIM] Platform Independent Model
+      \item[PM] Platform Model
+      \item[PSM] Platform--Specific Model
+      \item[CODE] Генерируемый исходный код
+      \item[DATA] Начальное состояние баз данных
       \end{description}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{НИРОКР Model--Driven Architecture}
+  \textbf{Основная цель} НИРОКР разработать технологии MDA, где модели CIM, PIM представлены в языках SysML, UML, BPMN, CMMN с использованием Семантического веба:
+  \begin{enumerate}
+  \item CIM представляется в UML, SysML, BPMN, CMMN, или как результат анализа текстов программ,
+  \item PIM, PSM представляется в UML и в RDF с использованием стандартных онтологий,
+  \item трансформации реализуются в языке Logtalk,
+  \item сервера LOD запрашиваются на предмет дополнительной информации,
+  \item порождение документов и интерфейсов пользователя, размеченных по требованиям LOD.
+  \end{enumerate}
 \end{frame}
 
 % \begin{frame}
@@ -269,46 +283,32 @@
 %   We describe transformation in Logtalk, representing CIM, PIM and PSM as RDF graphs, allowing non-XMI sources to be used, organizing multi-stage modular transformations.
 % \end{frame}
 
-\begin{frame}
-  \frametitle{Logtalk as transformation definition language}
-  We have chosen Logtalk as it
+\begin{frame}[fragile]
+  \frametitle{Технологии семантического веба -- элемент моделей трансформации}
   \begin{itemize}
-  \item inherits widely known Prolog language syntax and runtime;
-  \item is implemented as macro package, performance penalties are about 1.5\%;
-  \item has flexible semantics: we can define transformations and constraints within the same syntax;
-  \item implement object--oriented knowledge (rules) structuring, encapsulation and replacement;
-  \item compositional way of transformation implementation;
-  \item powerful engine to post constraints on object-to-object messages (events);
-  \item has implementation for various Prolog engines.
+  \item Использование результатов исследований, формализации и стандартизации предметных областей
+  \item Граф знаний задается множеством троек
+  \item Онтологии описываются формально (\verb|rdfs:domain|, \verb|rdfs:range|);
+  \item Поддержаны в большинстве систем программирования библиотеками, механизмами логического вывода, SPARQL
+  \item Существует способ глобальной идентификации объектов в RDF: в разных программах можно идентифицировать один о тот же объект
+  \item SWI-Prolog поддерживает механизмы прямых запросов к графу и интерпретацию некоторых отношений (\verb|rdfs:label|, \verb|dc:title|)
+  \item Простая поддержка разделения доступа к информации (\verb|rdfs:seeAlso|)
+  \item Семантический веб и LOD -- основа интеграции приложений
   \end{itemize}
-  The <<regular>> language allow us to use its libraries not directly related to MDA transformations.
 \end{frame}
-% \begin{frame}[fragile]
-%   \frametitle{Semantic Web technologies in representation of models
-%     during transformation}
-%   \begin{itemize}
-%   \item Assimilates experience of domain basic researches trending to standardization;
-%   \item Regular set of triples denote a graph (T-Box, A-Box);
-%   \item Standard vocabularies are formally described (\verb|rdfs:domain|, \verb|rdfs:range|);
-%   \item Supported with most programming systems (libraries, inference engines, SPARQL);
-%   \item RDF has a way of global element identification, \emph{i.e.} we can refer the same object from different software systems;
-%   \item SWI-Prolog supports direct queries to a graph, as well as interpreting some predicates (\verb|rdfs:label|, \verb|dc:title|), wraps sparse RDF structure into a predicate arguments; ontological server ClioPatria;
-%   \item There is simple way of data security implementation (\verb|rdfs:seeAlso|);
-%   \item By means of Semantic Web \& LOD we are able to organize data transfer between heterogeneous information systems.
-%   \end{itemize}
-% \end{frame}
 
 \begin{frame}
-  \frametitle{Linked Open Data, LOD}
-  \begin{enumerate}
-  \item Information is published in Internet with open access license;
-  \item It is represented in a machine-readable form, e.g., Excel table instead of a bitmap picture;
-  \item An open format used, e.g., CSV instead of Excel;
-  \item The format is based on W3C recommended standards, allowing RDF and SPARQL reference;
-  \item Published data refer to objects, forming context.
-  \end{enumerate}
-  Thus, applications publish data as relations of objects (entities).
+\frametitle{Связанные открытые данные, LOD}
+\begin{enumerate}
+\item  Информация публикуется в Интернете с лицензией открытого доступа
+\item  Он представлен в машиночитаемой форме, например, таблица Excel вместо растрового изображения
+\item  открытый формат, используемый, например, CSV вместо Excel
+\item  Формат основан на рекомендуемых стандартах W3C, что позволяет ссылаться на RDF и SPARQL
+\item Опубликованные данные относятся к объектам, образующим контекст
+\end{enumerate}
+Таким образом, приложения публикуют данные как отношения объектов (сущностей)
 \end{frame}
+
 
 \begin{frame}
   \frametitle{Model Driven Architecture and Linked Open Data}
@@ -318,19 +318,20 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{MDA infrastructure}
+  \frametitle{Инфраструктура MDA}
   \centering
   \includegraphics[width=1\linewidth]{architecture-mda-lod-ext.pdf}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Architecture of transformation modules}
+  \frametitle{Процесс трансформации}
   \centering
-r  \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
+  % \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
+  \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{PSM: Scenario of a Class synthesis}
+  \frametitle{Сценарий синтеза PSM}
 
 %\begin{multicols}{2}
   \begin{columns}
@@ -373,7 +374,7 @@ tr(method, Method, ClassID, MethodID):-              % Transformation of methods
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Implementation of \texttt{Query} object}
+  \frametitle{Обрамление модели PSM}
 \begin{minted}[fontsize=\footnotesize{}]{logtalk}
 :- object(query(_XMI)).
 :- protected(xmi/1).
@@ -397,7 +398,7 @@ method(Name, ClassID, ID):-                  % ...method...
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Code Block (idea is taken from \texttt{llvmlite}${}^*$)}
+  \frametitle{Блок кода. Идея -- \texttt{llvmlite}${}^*$}
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \flushleft
@@ -435,7 +436,7 @@ renderitem(Item, String):-
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{PSM of a Python Class as a specialization of Code Block}
+  \frametitle{PSM-модель класса Python -- специализация блока кода}
 %\begin{multicols}{2}
   \begin{columns}
     \begin{column}{0.6\textwidth}
@@ -515,50 +516,50 @@ render(Result):-         % Source generator
 % \end{minted}
 % \end{frame}
 
-% \begin{frame}[fragile]
-%   \frametitle{Access LOD data}
+\begin{frame}[fragile]
+  \frametitle{Доступ к данным LOD}
 
-%   \begin{columns}
-% \begin{column}{0.5\textwidth}
-% \begin{minted}[fontsize=\scriptsize]{logtalk}
-% :- category(sparql).
-% :- public(query/2).
-% query(Pattern,Parameters,Row):-
-%     prepare(Pattern,Parameters,Query),
-%     server(Host,Port,Path),
-%     sparql_query(Query, Row,
-%         [host(Host),port(Port),path(Path)]).
-% :- protected(server/3).  % must be implemented
-%                          % by a subclass.
-% :- protected(prepare/3). % prepares a query
-% % . . . . . . . . . .    %             string.
-% :- end_category.
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{minted}[fontsize=\scriptsize]{logtalk}
+:- category(sparql).
+:- public(query/2).
+query(Pattern,Parameters,Row):-
+    prepare(Pattern,Parameters,Query),
+    server(Host,Port,Path),
+    sparql_query(Query, Row,
+        [host(Host),port(Port),path(Path)]).
+:- protected(server/3).  % must be implemented
+                         % by a subclass.
+:- protected(prepare/3). % prepares a query
+% . . . . . . . . . .    %             string.
+:- end_category.
 
-% :- object(dbpedia, extends(sparql)).
-% :- protected(server/3).
-% server('dbpedia.org',80,'/sparql').
-% :- public(entity_name/2).
-% entity_name(Entity,Language,Name):-
-%     query('select ?name where { '
-%           ' %w rdfs:label ?name. '
-%           'FILTER langMatches( lang(?label),'
-%           ' "%w" )}', [Entity, Language],
-%           row(Name)).
-% :- end_object.
+:- object(dbpedia, extends(sparql)).
+:- protected(server/3).
+server('dbpedia.org',80,'/sparql').
+:- public(entity_name/2).
+entity_name(Entity,Language,Name):-
+    query('select ?name where { '
+          ' %w rdfs:label ?name. '
+          'FILTER langMatches( lang(?label),'
+          ' "%w" )}', [Entity, Language],
+          row(Name)).
+:- end_object.
 
-% % ?- dbpedia::entity_name(dbr:'Passport', 'ru', Name).
-% \end{minted}
-% \end{column}
-% \begin{column}{0.5\textwidth}
-%   \flushright
-% \includegraphics[width=0.8\linewidth]{simple-diag.pdf}
-% \end{column}
-% \end{columns}
-% \end{frame}
+% ?- dbpedia::entity_name(dbr:'Passport', 'ru', Name).
+\end{minted}
+\end{column}
+\begin{column}{0.5\textwidth}
+  \flushright
+\includegraphics[width=0.8\linewidth]{simple-diag.pdf}
+\end{column}
+\end{columns}
+\end{frame}
 
 
-\begin{frame}
-  \frametitle{Applications: Dataflow representation of NGS analysis of amplicons}
+\begin{frame}[fragile]
+  \frametitle{Приложение: Диаграммы потока исполнения в NGS}
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \begin{raggedright}
@@ -567,18 +568,24 @@ render(Result):-         % Source generator
     \end{column}
     \begin{column}{0.4\textwidth}\footnotesize
       \begin{tabular}{ll}
-        Term & Description \\
+        Термин & Расшифровка \\
         \hline
-        NGS & New Generation\\ & Sequencing\\
-        Amplicon & A DNA or RNA part \\
-                 & copied many times \\
-        Mothur & A software toolset for\\ & NGS research \\
-        Rapidminer & A visual tool for \\
-             & data mining modeling\\
-             &  and execution
+        NGS & New Generation \\
+               & Sequencing \\
+        Amplicon & часть ДНК, РНК, \\
+               & скопированная \\
+               & много раз \\
+        Mothur & прикладной пакет \\
+               & для NGS \\
+        Rapidminer & визуальный \\
+               & инструмент для \\
+               & моделирования \\
+               & процессов \\
+               & Data Mining\\
+               & и их исполнения
       \end{tabular}
       ${}$\\[1em]
-      Green blocks are Mothur modules. Others are Rapidminer modules.
+      Зеленые блоки — это модули Mothur. Остальные -- модули Rapidminer.
     \end{column}
   \end{columns}
 \end{frame}
@@ -604,7 +611,7 @@ render(Result):-         % Source generator
 % \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Rapidminer module}
+  \frametitle{Модуль Rapidminer}
 \begin{minted}[fontsize=\tiny]{cpp}
 vector<string> AlignCommand::setParameters(){ // PART OF MODULE SOURCE
 try {
@@ -651,10 +658,10 @@ class MothurChimeraCcodeOperator extends MothurGeneratedOperator {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{RDF (TTL) representation and ad its query object}
+  \frametitle{Исхдоный граф RDF (TTL) и его обрамляющий объект}
 \begin{multicols}{2}
 \begin{minted}[fontsize=\tiny]{turtle}
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xml: <http://www.w3.org/.../namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 ngsp:spec a ngsp:Specification ;
     ngsp:module mothur:NoCommand,
@@ -669,7 +676,8 @@ mothur:align-check a ngsp:Module ;
                     dc:identifier "aligncheck" ] ;
             cnt:chars # . . . .
 # . . . . .
-mothur:align-check-idir-parameter a ngsp:Parameter ;
+mothur:align-check-idir-parameter
+    a ngsp:Parameter ;
     ngsp:important false ;
     ngsp:multipleSelectionAllowed false ;
     ngsp:optionsDefault "" ;
@@ -728,8 +736,6 @@ attr(Name, Value):-
     rdf_db::rdf_global_id(Value, V),
     RDF::rdf(Parameter, ngsp:Name, V).
 % . . . . .
-:- end_object.
-
 \end{minted}
 \end{multicols}
 \end{frame}
