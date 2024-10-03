@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="3.5in"
+   height="2in"
+   viewBox="0 0 88.9 50.8"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker3"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         id="path3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         id="path1" />
+    </marker>
+  </defs>
+  <g
+     id="layer1">
+    <g
+       id="g19">
+      <g
+         id="g4"
+         transform="translate(20.10834,10.758578)">
+        <rect
+           style="fill:#b3dfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect1"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text1"><tspan
+             id="tspan1"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">QGIS</tspan></text>
+      </g>
+      <g
+         id="g2"
+         transform="translate(20.10834,23.590824)">
+        <rect
+           style="fill:#b3dfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect2"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="11.551587"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.397247"
+           y="15.548764"
+           id="text2"><tspan
+             id="tspan2"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.397247"
+             y="15.548764">ArcGIS</tspan></text>
+      </g>
+      <g
+         id="g3"
+         transform="translate(3.99164,24.692159)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect3"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text3"><tspan
+             id="tspan3"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">DSAS</tspan></text>
+      </g>
+      <g
+         id="g5"
+         transform="translate(36.144884,10.758578)">
+        <rect
+           style="fill:#b3d7df;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect4"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text4"><tspan
+             id="tspan4"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">REST</tspan></text>
+      </g>
+      <g
+         id="g6"
+         transform="translate(45.669891,22.046327)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect5"
+           width="9.2172279"
+           height="7.0653849"
+           x="1.3176541"
+           y="13.096084"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="3.4014173"
+           y="17.136265"
+           id="text5"><tspan
+             id="tspan5"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="3.4014173"
+             y="17.136265">ImgSt</tspan></text>
+      </g>
+      <g
+         id="g7"
+         transform="translate(20.10834,-3.1749999)">
+        <rect
+           style="fill:#dfb3d4;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect6"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text6"><tspan
+             id="tspan6"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">JPG...</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 35.427513,28.798631 v 5.954992"
+         id="path7" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 35.427513,14.962309 v 5.954992"
+         id="path8" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 46.508956,24.613858 H 40.553964"
+         id="path9" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 51.490825,28.798631 v 5.954992"
+         id="path10" />
+      <g
+         id="g10"
+         transform="translate(52.31467,10.758578)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect10"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.397247"
+           y="14.490431"
+           id="text10"><tspan
+             id="tspan10"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.397247"
+             y="14.490431">SegAny</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 62.62076,24.613858 H 56.665768"
+         id="path11" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 67.786803,28.660157 v 5.954992"
+         id="path12" />
+      <g
+         id="g12"
+         transform="translate(61.871733,22.046327)">
+        <rect
+           style="fill:#dfb3dd;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect12"
+           width="9.2172279"
+           height="7.0653849"
+           x="1.3176541"
+           y="13.096084"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="3.4014173"
+           y="17.136265"
+           id="text12"><tspan
+             id="tspan12"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="3.4014173"
+             y="17.136265">HDF5</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 62.62076,38.683712 H 56.665768"
+         id="path13" />
+      <g
+         id="g13"
+         transform="translate(45.669891,-5.5771527)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect13"
+           width="9.2172279"
+           height="7.0653849"
+           x="1.3176541"
+           y="12.852407"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="2.8722506"
+           y="17.136265"
+           id="text13"><tspan
+             id="tspan13"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="2.8722506"
+             y="17.136265">FeatEx</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 51.490825,14.976844 v 5.954993"
+         id="path14" />
+      <g
+         id="g14"
+         transform="translate(61.871733,-5.8208284)">
+        <rect
+           style="fill:#dfb3dd;fill-opacity:1;stroke:#000000;stroke-width:0.564999;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+           id="rect14"
+           width="9.2172279"
+           height="7.0653849"
+           x="1.3176541"
+           y="13.096084"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="3.4014173"
+           y="17.136265"
+           id="text14"><tspan
+             id="tspan14"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="3.4014173"
+             y="17.136265">HDF5</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 62.62076,10.745735 H 56.665768"
+         id="path15" />
+      <g
+         id="g15"
+         transform="translate(3.99164,10.758578)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.565;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.565, 1.695;stroke-dashoffset:0;paint-order:markers stroke fill"
+           id="rect15"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text15"><tspan
+             id="tspan15"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">ShRec</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 30.471501,24.613858 H 24.516509"
+         id="path16" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 30.471501,38.526228 H 24.516509"
+         id="path17" />
+      <g
+         id="g18"
+         transform="translate(3.99164,-3.1749994)">
+        <rect
+           style="fill:#dddfb3;fill-opacity:1;stroke:#000000;stroke-width:0.565;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.565, 1.695;stroke-dashoffset:0;paint-order:markers stroke fill"
+           id="rect18"
+           width="9.2172279"
+           height="7.0653849"
+           x="10.842652"
+           y="10.450253"
+           ry="0.70350617" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+           x="12.926414"
+           y="14.490431"
+           id="text18"><tspan
+             id="tspan18"
+             style="font-size:2.11667px;stroke-width:0.264583"
+             x="12.926414"
+             y="14.490431">ExpEv</tspan></text>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="M 30.550507,20.942211 24.071334,14.382715"
+         id="path18" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker3)"
+         d="m 67.786803,14.995356 v 5.954992"
+         id="path28" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="10.589374"
+       y="34.272526"
+       id="text6-0"><tspan
+         id="tspan6-9"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="10.589374"
+         y="34.272526">Прогнозирование</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="6.3560419"
+       y="19.985012"
+       id="text19"><tspan
+         id="tspan19"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="6.3560419"
+         y="19.985012">Распознование линии</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="4.2393751"
+       y="5.6975141"
+       id="text20"><tspan
+         id="tspan20"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="4.2393751"
+         y="5.6975141">Экспертное оценивание</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="29.110214"
+       y="5.6975141"
+       id="text21"><tspan
+         id="tspan21"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="29.110214"
+         y="5.6975141">Источник изобр.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="29.110214"
+       y="5.6975141"
+       id="text22"><tspan
+         id="tspan22"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="29.110214"
+         y="5.6975141">Источник изобр.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="46.572731"
+       y="5.6975141"
+       id="text23"><tspan
+         id="tspan23"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="46.572731"
+         y="5.6975141">Анализ свойств масок</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="73.184837"
+       y="24.556591"
+       id="text24"><tspan
+         id="tspan24"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="73.184837"
+         y="24.556591">Распознавание</tspan><tspan
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="73.184837"
+         y="27.202429"
+         id="tspan30">объектов</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="63.020145"
+       y="45.285835"
+       id="text25"><tspan
+         id="tspan25"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="63.020145"
+         y="45.285835">Хранение растров</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="73.53653"
+       y="9.9179001"
+       id="text26"><tspan
+         id="tspan26"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="73.53653"
+         y="9.9179001">Хранение</tspan><tspan
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="73.53653"
+         y="12.563738"
+         id="tspan29">масок</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="38.149288"
+       y="45.285835"
+       id="text27"><tspan
+         id="tspan27"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="38.149288"
+         y="45.285835">Преобразование изобр.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="41.194412"
+       y="23.598198"
+       id="text28"><tspan
+         id="tspan28"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="41.194412"
+         y="23.598198">HTTP</tspan></text>
+  </g>
+</svg>
