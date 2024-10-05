@@ -92,8 +92,8 @@
     \usepackage{unicode-math}
     \defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
     \setmathfont{Latin Modern Math}
-%    \setsansfont{Linux Biolinum O}
-    \setsansfont{Source Han Sans CN Medium}
+    \setsansfont{Linux Biolinum O}
+    % \setsansfont{Source Han Sans CN Medium}
     \setmonofont{Fira Mono}[Scale=MatchLowercase]
     \usefonttheme{professionalfonts}
     % \setmathfont[
@@ -110,7 +110,7 @@
 \setbeamertemplate{background canvas}[vertical shading][bottom=white!80!cyan!20,top=cyan!10]
 %\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white!40!black,right=black]
 
-\graphicspath{{pics/}}
+\graphicspath{{pics/}{pics/geol}}
 
 \providecommand{\email}[1]{\texttt{#1}}
 \usepackage{changepage}
@@ -235,12 +235,46 @@
   \frametitle{HZ What}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Мониторинг берегов Братского водохранилища}
-
+\begin{frame}[fragile]
+  \frametitle{Мониторинг береговой зоны Братского водохранилища}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{shore-struct-base.png}
+      За положение береговой линии
+принята последовательная линейная характеристика - положение бровки берегового уступа,  которое изменяется под воздействием волновой деятельности водохранилища и процессов разрушения берегового уступа.
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{bratsk-reserv-shores.jpeg}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Мониторинг береговой зоны Братского водохранилища}
+  \begin{columns}
+    \begin{column}{0.4\linewidth}
+      \includegraphics[width=\linewidth]{bratsk-reserv-shores.jpeg}
+    \end{column}
+    \begin{column}{0.6\linewidth}
+      Результаты мониторинга: после более 50-ти лет эксплуатации  береговая зона все еще не достигла стадии устойчивого равновесия.  Сохраняется абразионный размыв, особенно береговых склонов, сложенных рыхлыми отложениями.
 
+\vspace{1em}
+От стабильности береговой зоны зависит возможность ее технического, рекреационного и др. видов использования, особенно в условиях, когда уровень воды регулируется технически в достаточно большом диапазоне значений сезонного (2-3 м) и многолетнего регулирования (до 10 м).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Прогнозирование конура береговой линии}
+  \begin{columns}
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]{dsas-model.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      Измерение расстояния от базовой линии до каждой точки пересечения; это расстояние используется в сочетании с соответствующей датой береговой линии для расчета статистики скорости изменения.
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Интерпретация как трансформация. Model--Driven Architecture}
