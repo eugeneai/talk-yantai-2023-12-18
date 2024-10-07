@@ -126,27 +126,33 @@
 \setbeamertemplate{background canvas}[vertical shading][bottom=white,top=white]
 \setbeamercolor{background canvas}{bg=white}
 
-\title{Первопорядковый логический вывод при решении задач распознавания с использованием результатов, полученных алгоритмически и нейросетевыми методами}
-\author[академик Игорь Бычков, к.т.н. Евгений Черкашин]{\bfseries%
-  Evgeny Cherkashin}
-\institute{\normalsize Институт динамики систем и теории управления СО РАН, Иркутск, Россия \\
-  \email{\href{mailto:bychkov@icc.ru}{bychkov@icc.ru}}%
+\title[Первопорядковый логический вывод в задачах распознавания]{Первопорядковый логический вывод при решении задач распознавания с использованием результатов, полученных алгоритмически и нейросетевыми методами}
+\author[к.т.н. Евгений Черкашин, к.г.-м.н. Оксана Мазаева, академик Игорь Бычков]{\bfseries%
+  Евгений Черкашин, Оксана Мазаева, Игорь Бычков}
+\institute{\normalsize
+\noindent\begin{raggedright}\noindent
+     \hspace{3em}Институт динамики систем и теории управления СО РАН \\
+     \hspace{3em}Институт земной коры СО РАН\\
+     \hspace{3em}Институт математики и информационных технологий ИГУ \\
+  \end{raggedright}
+  Иркутск, Россия\\[1em]
+  \email{\href{mailto:eugeneai@icc.ru}{eugeneai@icc.ru}}%
 }
-\date[2024]{2024 октября, Новосибирск }
+\date[2024]{8.10.2024 , Новосибирск }
 %\date{\today}
 \maketitle
 
-\begin{frame}
-  \frametitle{QR-Код презентации}
-  \begin{center}
-    \includegraphics[width=0.4\linewidth]{presentation.png}
-% \url{https://github.com/eugeneai/talk-yantai-2023-12-18/blob/master/talk-la-in-soft-data-design-2023-12-18.pdf}
+% \begin{frame}
+%   \frametitle{QR-Код презентации}
+%   \begin{center}
+%     \includegraphics[width=0.4\linewidth]{presentation.png}
+% % \url{https://github.com/eugeneai/talk-yantai-2023-12-18/blob/master/talk-la-in-soft-data-design-2023-12-18.pdf}
 
-  \end{center}
-\end{frame}
+%   \end{center}
+% \end{frame}
 
 \begin{frame}
-  \frametitle{Проблематика распознавания сценариев}
+  \frametitle{Проблематика распознавания}
   \begin{enumerate}
   \item Термин \emph{искусственный интеллект} (ИИ) в настоящее время связывают с моделями, основанными на машинном обучении (МО):
     \begin{itemize}
@@ -184,7 +190,7 @@
 % Решение этой задачи основывается на построении иерархической системы моделей, где на нижнем уровне располагаются результаты распознания и классификации объектов (индивидуальных фраз в текстовых сообщениях, тональностей в аудио"=сообщениях, кадров изображений) методами МО, выше представлены модели статического аспекта сцен на кадрах, выраженных в свойствах объектов и связей между ними. Уровни выше описывают информационный поток сообщений как набор сцен, который, в свою очередь также является сценой. Сопоставление конкретной распознанной сцены одному из заданных сценариев есть решение задачи классификации. При этом в качестве результата получаем не только решение о классе, но и параметры элементов сценария.
 
   \item Структуры данных результата далее интерпретируются, например, трансформируются в новую модель.
-  \item Вкладываем ресурсы не в создание новой модели МО с непредсказуемыми свойствами, а в построение моделей рассуждения.
+  \item Ресурсы вкладываются не в создание новой модели МО с непредсказуемыми свойствами, а в построение моделей рассуждения.
 % Интерпретация сценария зависит от поставленной задачи (целевого сценария). Сама распознанная сцена и ее соответствие сценарию представляет собой модель интерпретации высокого уровня. Для реализации других вариантов интерпретации сцен, а также реализации процедур синтеза информационных объектов, необходимо задания контекстной модели. Система искусственного интеллекта (ИИ), основанная на формализованных знаниях, при помощи анализа результата распознавания и модели контекста порождает соответствующий вариант интерпретации или целевой объект.
     \end{enumerate}
     % \textbf{Данная модель соответствует иерархической структуре, представленной в [Васильев и др. 2000].}
@@ -194,59 +200,25 @@
 \begin{frame}
   \frametitle{Инструменты реализации}
   \begin{enumerate}
-  \item Алгоритмы распознавания (регулярные выражения, свертки).
-  \item Универсальные предобученные нейронные сети.
-  \item Хранилища разноформатных данных, накапливающие семантическую информацию об объектах.
-  \item Обеспечение доступа к внешним данным и знаниям.
-  \item Логическое программирование (ЛП): языки, реализации.
+  \item Алгоритмы распознавания (регулярные выражения, свертки)
+  \item Универсальные предобученные нейронные сети
+  \item Хранилища разноформатных данных, накапливающие семантическую информацию об объектах
+  \item Обеспечение доступа к внешним данным и знаниям
+  \item Логическое программирование (ЛП): языки, реализации
   \item Методики представления моделей на языках ЛП:
     \begin{itemize}
     \item моделирование сценариев,
     \item процедур идентификации структур и параметров,
-    \item трансформации получаемых структур.
+    \item трансформации получаемых структур
     \end{itemize}
   \end{enumerate}
   Экспериментальный инструментарий
   \begin{itemize}
-  \item Предобученная НС изображений (Segment Anything, 2024).
-  \item Хранение данных в распределенных графах знаний. Linked Open Data (LOD), SPARQL.
-  \item Язык логического ООП (ЛООП) Logtalk - макропакет над разными реализациями ISO-Prolog.
-    \item Методики применения ЛООП при проектировании моделей распознавания и трансформации.
+  \item Предобученная НС изображений (Segment Anything, 2024)
+  \item Хранение данных в распределенных графах знаний. Linked Open Data (LOD), SPARQL
+  \item Язык логического ООП (ЛООП) Logtalk - макропакет над разными реализациями ISO-Prolog
+    \item Методики применения ЛООП при проектировании моделей распознавания и трансформации
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Logtalk -- средство манипуляции знаниями}
- % \frametitle{Logtalk as transformation definition language}
-  Выбран, т.к. имеет следующие свойства.
-  \begin{itemize}
-  \item наследует широко известный синтаксис и среду исполнения Prolog;
-  \item реализован как макропакет, потери производительности составляют около 1.5-10\%;
-  \item имеет гибкую семантику: преобразования и ограничения определяются в рамках одного и того же синтаксиса;
-  \item реализует объектно-ориентированное структурирование знаний (правил), инкапсуляцию и замену;
-  \item из преобразований можно строить композиции;
-  \item механизм включения ограничений перехватом сообщений объекта к объекту (событий);
-  \item есть варианты для различных реализаций ISO Prolog.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{HZ What}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Мониторинг береговой зоны Братского водохранилища}
-  \begin{columns}
-    \begin{column}{0.5\linewidth}
-      \includegraphics[width=\linewidth]{shore-struct-base.png}
-      За положение береговой линии
-принята последовательная линейная характеристика - положение бровки берегового уступа,  которое изменяется под воздействием волновой деятельности водохранилища и процессов разрушения берегового уступа.
-    \end{column}
-    \begin{column}{0.5\linewidth}
-      \includegraphics[width=\linewidth]{bratsk-reserv-shores.jpeg}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -264,6 +236,21 @@
   \end{columns}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{Береговая зона Братского водохранилища}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{shore-struct-base.png}
+      За положение береговой линии
+принята последовательная линейная характеристика - положение бровки берегового уступа,  которое изменяется под воздействием волновой деятельности водохранилища и процессов разрушения берегового уступа.
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]{bratsk-reserv-shores.jpeg}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Прогнозирование конура береговой линии}
   \begin{columns}
@@ -271,9 +258,77 @@
       \includegraphics[width=\linewidth]{dsas-model.png}
     \end{column}
     \begin{column}{0.4\linewidth}
-      Измерение расстояния от базовой линии до каждой точки пересечения; это расстояние используется в сочетании с соответствующей датой береговой линии для расчета статистики скорости изменения.
+      Модель экстраполирует контур береговой линии по точкам вдоль нормали к базовой линии.  Исходными данными служат контуры береговых линий, соответствующие разным годам.  Исходные данные для получение контуров -- спутниковые, аэрофотоснимки, съемка с квадрокоптера и непосредственно измерение.
+
+      Проблема -- распознавание контуров береговых линий на растровых изображениях, имеющих различные характеристики.
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Технология SegmentAnything}
+  \begin{columns}
+    \begin{column}{0.25\linewidth}
+      \includegraphics[width=1\linewidth]{photo-source.png}
+    \end{column}
+    \begin{column}{0.25\linewidth}
+      \includegraphics[width=1\linewidth]{sa-photo-result.png}
+    \end{column}
+    \begin{column}{0.25\linewidth}
+      \includegraphics[width=1\linewidth]{source-img-ge.jpeg}
+    \end{column}
+    \begin{column}{0.25\linewidth}
+      \includegraphics[width=1\linewidth]{sa-source-ge.png}
+    \end{column}
+  \end{columns}
+  Техническая проблема -- на разнообразных цифровых изображениях распознать береговую линию:
+  \begin{itemize}
+  \item аэрофотоснимки,
+  \item ортофотопланы,
+  \item данные дистанционного зондирования Земли,
+  \item измерения во время полевых исследований.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Привязка разметки OpenStreetMap к ключевым точкам}
+  \includegraphics[width=1\linewidth]{tracing.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Архитектура распределенного сервиса}
+  \includegraphics[width=1\linewidth]{arch.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Технология}
+  \includegraphics[width=1\linewidth]{tech.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Интерфейс ГИС со средой обработки информации}
+  \includegraphics[width=1\linewidth]{screen-qgis.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Заключение по первому приложению}
+  Сервис реализован примерно на 30\%, из оставшегося 30\% -- решение задачи распознавания береговой линии, остальное -- реализация технических задач.
+  \begin{enumerate}
+  \item SegmentAnything достаточно универсален и независим от свойств входного изображения
+    \begin{itemize}
+    \item наличие цветности,
+    \item разрешения,
+    \item размера,
+    \end{itemize}
+  \item Нет необходимости тратить время на подготовку изображений для качественного обучения
+  \item Решение задачи распознавания вовлекает свободно сторонние ресурсы
+  \item Верификация результатов распознавания НС в контексте логической задачи (теории)
+  \end{enumerate}
+  Дальнейшие направления совершенствования сервиса --
+  \begin{enumerate}
+  \item генерация данных для обучения НС,
+  \item разработать итеративный алгоритм последовательного уточнения контура -- переходить к изображениям высокого разрешения на следующем шаге.
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -346,7 +401,7 @@
 \item  Формат основан на рекомендуемых стандартах W3C, что позволяет ссылаться на RDF и SPARQL
 \item Опубликованные данные относятся к объектам, образующим контекст
 \end{enumerate}
-Таким образом, приложения публикуют данные как отношения объектов (сущностей)
+Таким образом, приложения публикуют данные как отношения объектов (сущностей).
 \end{frame}
 
 
@@ -368,6 +423,21 @@
   \centering
   % \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
   \includegraphics[width=0.9\linewidth]{architect_tree_pres-en-wo-OCL.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Logtalk -- средство манипуляции знаниями}
+ % \frametitle{Logtalk as transformation definition language}
+  Выбран, т.к. имеет следующие свойства:
+  \begin{itemize}
+  \item наследует широко известный синтаксис и среду исполнения Prolog
+  \item реализован как макропакет, потери производительности составляют около 1.5-10\%
+  \item имеет гибкую семантику: преобразования и ограничения определяются в рамках одного и того же синтаксиса
+  \item реализует объектно-ориентированное структурирование знаний (правил), инкапсуляцию и замену
+  \item из преобразований можно строить композиции
+  \item механизм включения ограничений перехватом сообщений объекта к объекту (событий)
+  \item есть варианты для различных реализаций ISO Prolog
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -598,39 +668,6 @@ entity_name(Entity,Language,Name):-
 \end{frame}
 
 
-\begin{frame}[fragile]
-  \frametitle{Приложение: Диаграммы потока исполнения в NGS}
-  \begin{columns}
-    \begin{column}{0.6\textwidth}
-      \begin{raggedright}
-        \includegraphics[width=1\linewidth]{Dataflow-color-en.png}
-      \end{raggedright}
-    \end{column}
-    \begin{column}{0.4\textwidth}\footnotesize
-      \begin{tabular}{ll}
-        Термин & Расшифровка \\
-        \hline
-        NGS & New Generation \\
-               & Sequencing \\
-        Amplicon & часть ДНК, РНК, \\
-               & скопированная \\
-               & много раз \\
-        Mothur & прикладной пакет \\
-               & для NGS \\
-        Rapidminer & визуальный \\
-               & инструмент для \\
-               & моделирования \\
-               & процессов \\
-               & Data Mining\\
-               & и их исполнения
-      \end{tabular}
-      ${}$\\[1em]
-      Зеленые блоки — это модули Mothur. Остальные -- модули Rapidminer.
-    \end{column}
-  \end{columns}
-\end{frame}
-
-
 % \begin{frame}
 %   \frametitle{Application in developing KBS}
 %   Development and maintaining applied \textbf{knowledge--based systems (KBS)} in the up to date adequate state requires a lot of efforts devoted to solving problems of
@@ -695,6 +732,38 @@ class MothurChimeraCcodeOperator extends MothurGeneratedOperator {
   }
 }
 \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Приложение: Диаграммы потока исполнения в NGS}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{raggedright}
+        \includegraphics[width=1\linewidth]{Dataflow-color-en.png}
+      \end{raggedright}
+    \end{column}
+    \begin{column}{0.4\textwidth}\footnotesize
+      \begin{tabular}{ll}
+        Термин & Расшифровка \\
+        \hline
+        NGS & New Generation \\
+               & Sequencing \\
+        Amplicon & часть ДНК, РНК, \\
+               & скопированная \\
+               & много раз \\
+        Mothur & прикладной пакет \\
+               & для NGS \\
+        Rapidminer & визуальный \\
+               & инструмент для \\
+               & моделирования \\
+               & процессов \\
+               & Data Mining\\
+               & и их исполнения
+      \end{tabular}
+      ${}$\\[1em]
+      Зеленые блоки — это модули Mothur. Остальные -- модули Rapidminer.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -796,55 +865,57 @@ attr(Name, Value):-
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Еще польза для машинного обучения}
-  Тенденции развития систем ИИ
-  \begin{itemize}
-  \item Переход от рассуждений (логического вывода) к реакции по шаблонам
-  \end{itemize}
-  Реализация тенденций
-  \begin{itemize}
-  \item Использовать маски Segment Anything и результаты распознавания в качестве данных для обучения
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Еще польза для машинного обучения}
+%   Тенденции развития систем ИИ
+%   \begin{itemize}
+%   \item Переход от рассуждений (логического вывода) к реакции по шаблонам
+%   \end{itemize}
+%   Реализация тенденций
+%   \begin{itemize}
+%   \item Использовать маски Segment Anything и результаты распознавания в качестве данных для обучения
+%   \end{itemize}
+% \end{frame}
 
 
 \begin{frame}
-  \frametitle{Conclusion}
-  The following results have been obtained as for today:
+  \frametitle{Заключение}
+  К настоящему времени получены следующие результаты:
   \begin{itemize}
-  \item A technique for model representation has been developed and tested.
-  \item A programming technique using object-oriented logical language Logtalk is deviced.
-  \item Ptototypes of various transformation procedures are implemented.
-  \item Transformation tools are tested in application areas and no significant technical problems were mentioned.
+  \item Разработана и протестирована техника представления моделей
+  \item Разработана методика программирования на объектно-ориентированном логическом языке Logtalk
+  \item Реализованы прототипы различных операций трансформации
+  \item Инструменты трансформации протестированы в прикладных областях, и никаких существенных технических проблем не было отмечено
   \end{itemize}
-  Further development directions are as follows:
+  Дальнейшие направления развития следующие:
   \begin{itemize}
-  \item A technique for document automatic markup with vocabulary entities.
-  \item A transformation implemenation techniques, minimizing usage of dynamic objects, targeting on macro properties of Logtalk.
-  \item Form a toolset out of existing prototypes obeing nowadays software development requirements.
+  \item Техника для автоматической разметки документов при помощи сущностей онтологий
+  \item Разработка методики реализации трансформации, минимизирующей использование динамических объектов и ориентированной на макро-возможности Logtalk
+  \item Формирование набора инструментов из существующих прототипов, отвечающих современным требованиям разработки программного обеспечения
   \end{itemize}
-  The source codes are available at \url{https://github.com/isu-enterprise/icc.xmitransform}, \url{https://github.com/eugeneai/icc.mothurpim}.
+  Исхдоный код проекта опубликован на Github:\\
+\url{https://github.com/isu-enterprise/icc.xmitransform},\\ \url{https://github.com/eugeneai/icc.mothurpim}.
 \end{frame}
- \begin{frame}
-   \frametitle{Conclusion (the final one)}
-   \begin{itemize}
-   \item Classic knowledge-based systems are powerful AI tools for solving wide class of recognition problems and synthesis of various kind: source code, data objects, control
-   \item Contemporary means combine classic and new approaches
-   \item Less dependent on computational resources (as compared to machine learning)
-   \item Allow justification of the produced solutions
-   \item Cover a larger set of tasks
-   \item Natural for math science, and require higher level of AI education
-   \end{itemize}
- \end{frame}
+
+% \begin{frame}
+%    \frametitle{Вывод (заключительный)}
+%    \begin{itemize}
+%    \item Классические системы, основанные на знаниях, являются мощными инструментами ИИ для решения широкого класса задач распознавания и синтеза различного рода: исходного кода, объектов данных, управления
+%    \item Современные средства сочетают в себе классические и новые подходы
+%    \item Менее зависимы от вычислительных ресурсов (по сравнению с машинным обучением)
+%    \item Позволяют обосновать полученные решения
+%    \item Охватывают больший круг задач
+%    \item Естественно для математических наук и требует более высокого уровня образования в области ИИ
+%    \end{itemize}
+%  \end{frame}
 
 
 \begin{frame}
   \begin{center}
     \Large Спасибо за внимание!
-\vfill
-\includegraphics[width=0.4\linewidth]{presentation.png}
-%\url{https://github.com/eugeneai/talk-yantai-2023-12-18/blob/master/talk-la-in-soft-data-design-2023-12-18.pdf}
+%\vfill
+%\includegraphics[width=0.4\linewidth]{presentation.png}
+%\url{https://github.com/eugeneai/talk-yantai-2023-12-18/blob/master/talk-la-in-soft-data-%design-2023-12-18.pdf}
 \end{center}
 \end{frame}
 
