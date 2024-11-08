@@ -15,3 +15,7 @@ clean:
 	BIBINPUTS=$(BIBROOT) $(LATEXMK) -C $(TARGET)
 	rm -f *.{bbl,aux,ps,dvi,log,toc,out,vrb,snm,nav} *~ ~* *.bak *.synctex.* *.thm *-joined.pdf *.wbk *_latexmk *.fls
 	# cd pics && make clean
+
+
+view: $(TARGET).pdf
+	evince $(TARGET).pdf &
